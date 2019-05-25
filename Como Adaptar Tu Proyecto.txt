@@ -1,0 +1,580 @@
+---------------------------------------------------------------------------------------
+		MIGRACIONES https://laravel.com/docs/5.4/migrations
+---------------------------------------------------------------------------------------
+configuro el .env con mi bd
+
+
+php artisan infyom:api_scaffold Area --fromTable --tableName=areas --save
+php artisan infyom:api_scaffold Asignatura --fromTable --tableName=asignaturas --save
+php artisan infyom:api_scaffold CargoConcursado --fromTable --tableName=cargosconcursados --save
+php artisan infyom:api_scaffold Carrera --fromTable --tableName=carreras --save
+php artisan infyom:api_scaffold Categoria --fromTable --tableName=categorias --save
+php artisan infyom:api_scaffold Concurso --fromTable --tableName=concursos --save
+php artisan infyom:api_scaffold ConcursoJurado --fromTable --tableName=concursosjurados --save
+php artisan infyom:api_scaffold ConcursoPostulante --fromTable --tableName=concursospostulantes --save
+php artisan infyom:api_scaffold Instituto --fromTable --tableName=institutos --save
+php artisan infyom:api_scaffold Llamado --fromTable --tableName=llamados --save
+php artisan infyom:api_scaffold LlamadoConcursos --fromTable --tableName=llamadosconcursos --save
+php artisan infyom:api_scaffold Log --fromTable --tableName=logs --save
+php artisan infyom:api_scaffold Perfiles --fromTable --tableName=perfiles --save
+php artisan infyom:api_scaffold Persona --fromTable --tableName=personas --save
+php artisan infyom:api_scaffold Requisito --fromTable --tableName=requisitos --save
+php artisan infyom:api_scaffold RequisitoItem --fromTable --tableName=requisitositems --save
+php artisan infyom:api_scaffold RequisitoPostulante --fromTable --tableName=requisitospostulantes --save
+php artisan infyom:api_scaffold Universidad --fromTable --tableName=universidades --save
+php artisan infyom:api_scaffold User --fromTable --tableName=users --save
+
+creamos la migration : php artisan make:migration nombre_migracion
+
+
+agregamos timestamps a las tablas
+
+class Timestamps extends Migration
+{
+p
+    /**
+     * Run the migrations.
+
+     *
+     * @return void
+     */
+
+   public function up()
+
+{
+
+        Schema::table('areas' , function( Blueprint $table ){
+
+          $table->timestamps();
+
+	  $table->timestamp('deleted_at')->nullable();
+
+        });
+
+	Schema::table('asignaturas' , function( Blueprint $table ){
+
+          $table->timestamps();
+
+	  $table->timestamp('deleted_at')->nullable();
+
+	});
+
+        Schema::table('cargosconcursados' , function( Blueprint $table ){
+
+
+        $table->timestamps();
+
+
+       	$table->timestamp('deleted_at')->nullable();
+
+
+        });
+        Schema::table('carreras' , function( Blueprint $table ){
+
+
+        $table->timestamps();
+
+
+        $table->timestamp('deleted_at')->nullable();
+
+
+        });
+	Schema::table('categorias' , function( Blueprint $table ){
+
+          $table->timestamps();
+
+	  $table->timestamp('deleted_at')->nullable();
+
+	});
+
+	Schema::table('concursos' , function( Blueprint $table ){
+
+          $table->timestamps();
+
+	  $table->timestamp('deleted_at')->nullable();
+
+	});
+
+	Schema::table('concursosjurados' , function( Blueprint $table ){
+
+          $table->timestamps();
+
+          $table->timestamp('deleted_at')->nullable();
+
+	});
+
+	Schema::table('concursospostulantes' , function( Blueprint $table ){
+
+          $table->timestamps();
+
+	  $table->timestamp('deleted_at')->nullable();
+
+	});
+
+	Schema::table('institutos' , function( Blueprint $table ){
+
+          $table->timestamps();
+
+	  $table->timestamp('deleted_at')->nullable();
+
+	});
+
+
+        Schema::table('llamados' , function( Blueprint $table ){
+
+
+        $table->timestamps();
+
+
+        $table->timestamp('deleted_at')->nullable();
+
+
+        });
+        Schema::table('llamadosconcursos' , function( Blueprint $table ){
+
+
+        $table->timestamps();
+
+
+        $table->timestamp('deleted_at')->nullable();
+
+
+        });
+        Schema::table('logs' , function( Blueprint $table ){
+
+
+        $table->timestamps();
+
+
+        $table->timestamp('deleted_at')->nullable();
+
+
+        });
+	Schema::table('perfiles' , function( Blueprint $table ){
+
+          $table->timestamps();
+
+	  $table->timestamp('deleted_at')->nullable();
+
+	});
+
+	Schema::table('personas' , function( Blueprint $table ){
+
+          $table->timestamps();
+
+	  $table->timestamp('deleted_at')->nullable();
+
+	});
+        Schema::table('requisitos' , function( Blueprint $table ){
+
+
+        $table->timestamps();
+
+
+        $table->timestamp('deleted_at')->nullable();
+
+
+        });
+        Schema::table('requisitositems' , function( Blueprint $table ){
+
+
+        $table->timestamps();
+
+
+        $table->timestamp('deleted_at')->nullable();
+
+
+        });
+
+        Schema::table('requisitospostulantes' , function( Blueprint $table ){
+
+
+        $table->timestamps();
+
+
+        $table->timestamp('deleted_at')->nullable();
+
+
+        });
+        Schema::table('universidades' , function( Blueprint $table ){
+
+
+        $table->timestamps();
+
+
+        $table->timestamp('deleted_at')->nullable();
+
+
+        });
+	Schema::table('users' , function( Blueprint $table ){
+
+          $table->timestamps();
+
+	  $table->timestamp('deleted_at')->nullable();
+
+	});
+
+
+}
+
+ejecutamos : php artisan migrate
+------------------------------------------------------------------------------------
+                 Crear Variables de Relaciones Entre Tablas
+------------------------------------------------------------------------------------
+Solucionar tipo de elemento html que muestra la informacion en las vistas
+
+por la dudas volver a hacer la publicacion de los datatables
+php artisan vendor:publish --tag=datatables-buttons
+
+
+------------------------------------------------------------------------------------
+CONFIGURACIONES PRINCIPALES
+------------------------------------------------------------------------------------
+EN ARCHIVO CONFIG/APP.PHP
+CAMBIAR URL  : 'url' => env('APP_URL', 'http://localhost'), A 'url' => env('APP_URL', 'http://127.0.0.1:8000'),
+CAMBIAR ZONA HORARIA  : 'timezone' => 'UTC',  A  'timezone' => 'America/Argentina/Buenos_Aires',
+CAMBIAR LOCALE : 'locale' => 'en',  A  'locale' => 'es',
+CAMBIAR RESPUESTAS : 'fallback_locale' => 'es',
+EN ARCHIVO CONFIG/SESSION.PHP
+CAMBIAR TIEMPO DE VIDA DE SESSION ( MINUTOS ) 480 PARA OCHO HORAS
+
+
+-----------------------------------------------------------------------------------
+		Que debemos cambiar para que todo funcione?
+-----------------------------------------------------------------------------------
+
+				En Modelo :
+
+Rules para validar que los campos no queden vacios :
+
+    public static $rules = [
+
+        'nombre' => 'required',
+
+        'id_instituto' => 'required'
+
+    ];
+
+
+definicion de Relaciones con belongTo ( trae toda la coleccion de datos de la tabla user para cargar un select , si la FK no es igual a tabla_id debe aclararse como segundo parametro)
+
+public function userSus()
+
+    {
+        return $this->belongsTo(\App\Models\User::class , 'usuarioSustanciacion');
+    }
+
+    public function userCie()
+    {
+        return $this->belongsTo(\App\Models\User::class , 'usuarioCierre');
+    }
+
+definicion de Relaciones con belongTo (
+
+    public function jurados()
+
+{
+        return $this->belongsToMany(\App\Models\Jurado::class, 'concursosjurados');
+
+
+
+				En el Controlador :
+
+
+//retorno de variable con compact('variable')  para enviar el pluck('Campo' , 'PK') para cargar el select
+
+    public function create()
+
+    {
+
+        $institutos = \App\Models\Instituto::pluck('nombre' , 'id');
+
+        return view('carreras.create' , compact('institutos'));
+
+    }
+    public function edit($id)
+
+    {
+
+	$institutos = Instituto::pluck('nombre' , 'id') ;
+
+
+	$carrera = $this->carreraRepository->findWithoutFail($id);
+
+
+	if (empty($carrera)) {
+
+	Flash::error('Carrera not found');
+
+
+	return redirect(route('carreras.index', compact('institutos')));
+
+	}
+
+
+	return view('carreras.edit' , compact('institutos'))->with('carrera', $carrera);
+
+}
+
+				En las vistas
+
+En fields.blade.php
+
+<div class="form-group col-sm-6">
+
+    {!! Form::label('id_instituto', 'Id Instituto:') !!}
+
+    {!! Form::select('id_instituto', $institutos , null, ['class' => 'form-control', 'placeholder'=> 'Por Favor Seleccione Instituto']) !!}
+
+</div>
+
+
+En show_fields.blade.php depende de lo que declaro en el Models BelongTo  , hasMany o HasOne( recordar que tiene poner el metodo en plura finaliza en s )
+
+
+<!-- Instituto Id Field -->
+<div class="form-group">
+
+    {!! Form::label('instituto_id', 'Instituto Id:') !!}
+
+    <p>{!! $carrera->instituto->nombre !!}</p>
+</div>
+
+tambien se pueden poner muchos parametros de las tablas que traen las FK .
+ej.
+<!-- Concurso Id Field -->
+<div class="form-group">
+
+    {!! Form::label('concurso_id', 'Concurso Id:') !!}
+
+    <p>
+    Identificador  : {!! $concursoPostulante->concurso_id !!} <br>
+
+    Refencia General : {!! $concursoPostulante->concurso->referenciaGeneral !!} <br>
+
+    Asignatura : {!! $concursoPostulante->concurso->asignatura->nombre !!} <br>
+
+    Area : {!! $concursoPostulante->concurso->asignatura->area->nombre !!} <br>
+
+    Estado del Concurso : {!! $concursoPostulante->concurso->estado !!}
+
+</p>
+</div>
+
+
+
+C�mo personalizar el correo de recuperaci�n de contrase�as en Laravel 5.3 y 5.4
+
+https://styde.net/como-personalizar-el-correo-de-recuperacion-de-contrasenas-en-laravel-5-3-y-5-4/
+
+solucionar puerto y url de redireccion
+
+https://stackoverflow.com/questions/44880486/replace-localhost-with-real-domain-name-in-reset-password-of-laravel-5
+
+
+Excepciones :
+
+Laravel forgot Password 1/1) Swift_TransportException
+ Solucion :
+php artisan config:cache
+php artisan cache:clear
+php artisan config:clear
+
+
+
+https://rimorsoft.com/generar-reportes-pdf-en-laravel-5-5
+
+
+-----------------------------------------------------------------------------------------------------------------
+				RELACIONES EN DATATABLES QUERY()->JOIN()->SELECT
+-----------------------------------------------------------------------------------------------------------------
+TABLA1 = LA TABLA QUE TIENE LA FK
+TABLA2 = LA TABLA QUE TIENE LA PK
+
+
+$VARIABLE = MODELO::query()->JOIN('TABLA2','TABLA1.FK','=','TABLA2.id')->SELECT('TABLA1.id' , 'TABLA1.CAMPO AS ALIAS' , 'TABLA2.CAMPO AS ALIAS');
+
+
+private function getColumns()
+
+	{
+
+
+		return [
+
+		'CABECERATABLA1' => ['name' => 'TABLA1.CAMPO', 'data' => 'ALIAS'],
+            	'CABECERATABLA2' => ['name' => 'TABLA2.CAMPO', 'data' => 'ALIAS'
+		]
+
+
+];
+
+       }
+
+
+EJEMPLO:
+  public function query()
+
+	{
+
+		$carreras = Carrera::query()->join('institutos','carreras.instituto_id','=','institutos.id')
+
+                  ->select(['carreras.id' , 'carreras.nombre as carr_nom', 'institutos.nombre as ins_nom']);
+
+
+        return $this->applyScopes($carreras);
+
+	}
+
+
+
+ 	/*$posts = DB::table('posts')->join('users', 'posts.user_id', '=', 'users.id')
+
+			->select(['posts.id', 'posts.title', 'users.name', 'users.email', 'posts.created_at', 'posts.updated_at']);*/
+
+
+
+    private function getColumns()
+
+	{
+
+
+		return [
+
+		'Carrera' => ['name' => 'carreras.nombre', 'data' => 'carr_nom'],
+            	'Instituto' => ['name' => 'institutos.nombre', 'data' => 'ins_nom']
+
+
+
+		];
+
+       }
+
+--------------------------------------------------------------------------------
+gestion de contenedor de fotos de perfiles
+-------------------------------------------------------------------------------
+
+
+en UserController.PHP
+
+public function updatePhoto(Request $request)
+{
+	 if($request->hasFile('photo')){
+		 $photo = $request->file('photo');
+		 $filename = time() . '.' . $photo->getClientOriginalExtension();
+		 Image::make($photo)->resize(300, 300)->save( public_path('./uploads/photo/' . $filename ) );
+		 $user = Auth::user();
+		 $user->photo = $filename;
+		 $user->save();
+}
+ return view('profile', array('user' => Auth::user()) );
+}
+
+campos de tabla de datos
+
+EN TABLA users
+CREATE TABLE `users` (
+  `id` int(10) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role` enum('Usuario','Administrador') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Usuario',
+  `photo` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT 'default.jpg',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+)
+
+agregar archivo de vista profile.blade.php
+
+@extends('layouts.app')
+
+@section('content')
+
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <?php if (Empty($user->photo)): ?>
+                <img src="./uploads/photo/default.jpg" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
+            <?php else: ?>
+                  <img src="./uploads/photo/{{ $user->photo }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
+            <?php endif; ?>
+            <h2>{{ $user->name }}'s Profile</h2>
+            <form enctype="multipart/form-data" action="{{ url('/profile') }}" method="POST">
+                <label>Update Profile Image</label>
+                <input type="file" name="photo" >
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="row"></div>
+                <button type="submit" class="pull-right btn btn-lg btn-primary">
+                  <span class="glyphicon glyphicon-arrow-up"></span> Subir
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
+
+
+modificar app.blade en
+
+<li class="dropdown user user-menu">
+		<!-- Menu Toggle Button -->
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			@php
+			if(empty(Auth::user()->photo))
+				{
+					$image = url('/uploads/photo/default.jpg');
+				}
+			else
+				{
+					$image =  url('/uploads/photo/'.  Auth::user()->photo);
+
+				}
+			@endphp
+
+				<!-- The user image in the navbar-->
+				<img src="{{$image}}"
+						 class="user-image" alt="User Image"/>
+				<!-- hidden-xs hides the username on small devices so only the image appears. -->
+				<span class="hidden-xs">{!! Auth::user()->name !!}</span>
+	</li>
+
+
+-------------------------------------------------------------------------------
+
+<a href="{!! url('/profile') !!}" class="btn btn-default btn-flat">Profile</a>
+
+-------------------------------------------------------------------------------
+
+
+modificar sidebar.blade
+
+<div class="user-panel">
+		<div class="pull-left image">
+			@php
+			if(empty(Auth::user()->photo))
+				{
+					$image = url('/uploads/photo/default.jpg');
+				}
+			else
+				{
+					$image =  url('/uploads/photo/'.  Auth::user()->photo);
+
+				}
+			@endphp
+				<img src="{{$image}}" class="img-circle"
+						 alt="User Image"/>
+		</div>
+		<div class="pull-left info">
+				@if (Auth::guest())
+				<p>StartUp</p>
+				@else
+						<p>{{ Auth::user()->name}}</p>
+				@endif
+				<!-- Status -->
+				<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+		</div>
+</div>
