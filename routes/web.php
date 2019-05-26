@@ -19,3 +19,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::resource('locations', 'LocationController');
+
+Route::resource('services', 'ServiceController');
+
+Route::resource('services', 'ServiceController');
+
+Route::resource('users', 'UserController');
+
+Route::resource('orders', 'OrderController');
+
+Route::resource('consignements', 'ConsignementController');
+
+Route::resource('moveTasks', 'MoveTaskController');
+
+Route::resource('consignements', 'ConsignementController');
