@@ -44,7 +44,8 @@ class OrderController extends AppBaseController
         $status = ([ 'Creado'=>'Creado','Asignado'=>'Asignado','En viaje a Origen'=>'En viaje a Origen',
         'Retirado'=>'Retirado','En viaje a Destino'=>'En viaje a Destino',
         'Entregado'=>'Entregado','Completado'=>'Completado' ]);
-        return view('orders.create', compact('locations' , 'services' , 'status'));
+        $users = \App\Models\User::pluck('name' , 'id');
+        return view('orders.create', compact('locations' , 'services' , 'status' , 'users'));
     }
 
     /**
@@ -80,13 +81,14 @@ class OrderController extends AppBaseController
         $status = ([ 'Creado'=>'Creado','Asignado'=>'Asignado','En viaje a Origen'=>'En viaje a Origen',
         'Retirado'=>'Retirado','En viaje a Destino'=>'En viaje a Destino',
         'Entregado'=>'Entregado','Completado'=>'Completado' ]);
+        $users = \App\Models\User::pluck('name' , 'id');
         if (empty($order)) {
             Flash::error('Order not found');
 
             return redirect(route('orders.index'));
         }
 
-        return view('orders.show')->with('order', $order, 'locations' , 'services', 'status');
+        return view('orders.show')->with('order', $order, 'locations' , 'services', 'status' , 'users');
     }
 
     /**
@@ -104,13 +106,14 @@ class OrderController extends AppBaseController
         $status = ([ 'Creado'=>'Creado','Asignado'=>'Asignado','En viaje a Origen'=>'En viaje a Origen',
         'Retirado'=>'Retirado','En viaje a Destino'=>'En viaje a Destino',
         'Entregado'=>'Entregado','Completado'=>'Completado' ]);
+        $users = \App\Models\User::pluck('name' , 'id');
         if (empty($order)) {
             Flash::error('Order not found');
 
             return redirect(route('orders.index'));
         }
 
-        return view('orders.edit')->with('order', $order , 'locations' , 'services', 'status');
+        return view('orders.edit')->with('order', $order , 'locations' , 'services', 'status' , 'users');
     }
 
     /**
