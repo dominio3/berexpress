@@ -42,7 +42,7 @@ trait MakeLocationTrait
         $fake = Faker::create();
 
         return array_merge([
-            'description' => $fake->randomDigitNotNull,
+            'description' => $fake->word,
             'address' => $fake->word,
             'number' => $fake->randomDigitNotNull,
             'town' => $fake->word,
@@ -50,7 +50,11 @@ trait MakeLocationTrait
             'country' => $fake->word,
             'latitude' => $fake->randomDigitNotNull,
             'longitude' => $fake->randomDigitNotNull,
-            'users_id' => $fake->randomDigitNotNull
+            'atention_hour' => $fake->word,
+            'users_id' => $fake->randomDigitNotNull,
+            'created_at' => $fake->date('Y-m-d H:i:s'),
+            'updated_at' => $fake->date('Y-m-d H:i:s'),
+            'deleted_at' => $fake->date('Y-m-d H:i:s')
         ], $locationFields);
     }
 }

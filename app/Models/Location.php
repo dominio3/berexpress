@@ -18,8 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      @SWG\Property(
  *          property="description",
  *          description="description",
- *          type="integer",
- *          format="int32"
+ *          type="string"
  *      ),
  *      @SWG\Property(
  *          property="address",
@@ -60,6 +59,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="float"
  *      ),
  *      @SWG\Property(
+ *          property="atention_hour",
+ *          description="atention_hour",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
  *          property="users_id",
  *          description="users_id",
  *          type="integer",
@@ -89,6 +93,7 @@ class Location extends Model
         'country',
         'latitude',
         'longitude',
+        'atention_hour',
         'users_id'
     ];
 
@@ -107,6 +112,7 @@ class Location extends Model
         'country' => 'string',
         'latitude' => 'float',
         'longitude' => 'float',
+        'atention_hour' => 'string',
         'users_id' => 'integer'
     ];
 

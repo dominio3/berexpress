@@ -1,0 +1,13 @@
+reelavamiento
+
+Pagina Web de Pantalla principal ( Diseño ) redireccionamiento a sistema de gestion de Pedidos
+Registro de Cliente
+Pantallas diseñadas segun el rol
+Cliente genera pedido , almacena sus puntos . ( diseño UX , falcil
+
+aviso de locations con horarios.
+Google Maps : Calculo de Km de Origen a Destino , y Suma de Destino a Destino en el caso de ser mas.
+proteccion e integridad de datos , politica de backup
+
+
+

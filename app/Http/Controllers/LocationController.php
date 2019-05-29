@@ -70,7 +70,6 @@ class LocationController extends AppBaseController
      */
     public function show($id)
     {
-        $users = \App\Models\User::pluck('name' , 'id');
         $location = $this->locationRepository->findWithoutFail($id);
 
         if (empty($location)) {
@@ -79,7 +78,7 @@ class LocationController extends AppBaseController
             return redirect(route('locations.index'));
         }
 
-        return view('locations.show')->with('location', $location, compact('users'));
+        return view('locations.show')->with('location', $location);
     }
 
     /**
@@ -91,8 +90,8 @@ class LocationController extends AppBaseController
      */
     public function edit($id)
     {
-        $users = \App\Models\User::pluck('name' , 'id');
         $location = $this->locationRepository->findWithoutFail($id);
+        $users = \App\Models\User::pluck('name' , 'id');
 
         if (empty($location)) {
             Flash::error('Location not found');
@@ -100,7 +99,7 @@ class LocationController extends AppBaseController
             return redirect(route('locations.index'));
         }
 
-        return view('locations.edit')->with('location', $location, compact('users'));
+        return view('locations.edit', compact('users'))->with('location', $location );
     }
 
     /**

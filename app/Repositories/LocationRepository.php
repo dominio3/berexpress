@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class LocationRepository
  * @package App\Repositories
- * @version May 26, 2019, 1:34 pm -03
+ * @version May 29, 2019, 12:17 am -03
  *
  * @method Location findWithoutFail($id, $columns = ['*'])
  * @method Location find($id, $columns = ['*'])
@@ -28,6 +28,7 @@ class LocationRepository extends BaseRepository
         'country',
         'latitude',
         'longitude',
+        'atention_hour',
         'users_id'
     ];
 

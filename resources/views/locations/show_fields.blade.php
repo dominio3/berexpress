@@ -52,9 +52,33 @@
     <p>{!! $location->longitude !!}</p>
 </div>
 
+<!-- Atention Hour Field -->
+<div class="form-group">
+    {!! Form::label('atention_hour', 'Atention Hour:') !!}
+    <p>{!! $location->atention_hour !!}</p>
+</div>
+
 <!-- Users Id Field -->
 <div class="form-group">
     {!! Form::label('users_id', 'Users Id:') !!}
     <p>{!! $location->users_id !!}</p>
+</div>
+
+<!-- Created At Field -->
+<div class="form-group">
+    {!! Form::label('created_at', 'Created At:') !!}
+    <p>{!! $location->created_at !!}</p>
+</div>
+
+<!-- Updated At Field -->
+<div class="form-group">
+    {!! Form::label('updated_at', 'Updated At:') !!}
+    <p>{!! $location->updated_at !!}</p>
+</div>
+
+<!-- Deleted At Field -->
+<div class="form-group">
+    {!! Form::label('deleted_at', 'Deleted At:') !!}
+    <p>{!! $location->deleted_at !!}</p>
 </div>
 

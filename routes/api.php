@@ -33,3 +33,5 @@ Route::resource('consignements', 'ConsignementAPIController');
 Route::resource('move_tasks', 'MoveTaskAPIController');
 
 Route::resource('consignements', 'ConsignementAPIController');
+
+Route::resource('locations', 'LocationAPIController');

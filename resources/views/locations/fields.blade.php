@@ -1,3 +1,4 @@
+
 <!-- Description Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('description', 'Description:') !!}
@@ -46,9 +47,16 @@
     {!! Form::number('longitude', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Atention Hour Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('atention_hour', 'Atention Hour:') !!}
+    {!! Form::text('atention_hour', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Users Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::text('users_id', Auth::user()->id , ['class' => 'form-control hidden' ])!!}
+    {!! Form::label('users_id', 'Users Id:') !!}
+    {!! Form::select ('users_id', $users , null, ['class' => 'form-control' , 'disabled']) !!}
 </div>
 
 <!-- Submit Field -->

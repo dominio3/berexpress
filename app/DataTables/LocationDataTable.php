@@ -80,6 +80,7 @@ class LocationDataTable extends DataTable
             'country' => ['name' => 'country', 'data' => 'country'],
             'latitude' => ['name' => 'latitude', 'data' => 'latitude'],
             'longitude' => ['name' => 'longitude', 'data' => 'longitude'],
+            'atention_hour' => ['name' => 'atention_hour', 'data' => 'atention_hour'],
             'users_id' => ['name' => 'users_id', 'data' => 'users_id']
         ];
     }
