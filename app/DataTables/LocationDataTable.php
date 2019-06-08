@@ -5,6 +5,8 @@ namespace App\DataTables;
 use App\Models\Location;
 use Form;
 use Yajra\Datatables\Services\DataTable;
+//notas:importo clase para manejar usuarios
+use Illuminate\Support\Facades\Auth;
 
 class LocationDataTable extends DataTable
 {
@@ -27,8 +29,8 @@ class LocationDataTable extends DataTable
      */
     public function query()
     {
-        $locations = Location::query();
-
+        //notas:muestro solamente en la tabla locations del usuario que inicio sesion
+        $locations = Location::query()->where('users_id','=', Auth::User()->id);
         return $this->applyScopes($locations);
     }
 
@@ -45,7 +47,7 @@ class LocationDataTable extends DataTable
             ->ajax('')
             ->parameters([
                 'dom' => 'Bfrtip',
-                'scrollX' => false,
+                'scrollX' => true,
                 'buttons' => [
                     'print',
                     'reset',
@@ -81,7 +83,7 @@ class LocationDataTable extends DataTable
             'latitude' => ['name' => 'latitude', 'data' => 'latitude'],
             'longitude' => ['name' => 'longitude', 'data' => 'longitude'],
             'atention_hour' => ['name' => 'atention_hour', 'data' => 'atention_hour'],
-            'users_id' => ['name' => 'users_id', 'data' => 'users_id']
+            //'users_id' => ['name' => 'users_id', 'data' => 'users_id']
         ];
     }
 

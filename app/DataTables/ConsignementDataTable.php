@@ -73,7 +73,6 @@ class ConsignementDataTable extends DataTable
     {
         return [
             'document' => ['name' => 'document', 'data' => 'document'],
-            'priority' => ['name' => 'priority', 'data' => 'priority'],
             'line01' => ['name' => 'line01', 'data' => 'line01'],
             'line02' => ['name' => 'line02', 'data' => 'line02'],
             'line03' => ['name' => 'line03', 'data' => 'line03'],

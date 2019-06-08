@@ -55,8 +55,8 @@
 
 <!-- Users Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('users_id', 'Users Id:') !!}
-    {!! Form::select ('users_id', $users , null, ['class' => 'form-control' , 'disabled']) !!}
+    
+    {!! Form::number('users_id', Auth::user()->id , ['class' => 'form-control hidden']) !!}
 </div>
 
 <!-- Submit Field -->

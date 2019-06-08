@@ -90,6 +90,7 @@ class LocationController extends AppBaseController
      */
     public function edit($id)
     {
+        
         $location = $this->locationRepository->findWithoutFail($id);
         $users = \App\Models\User::pluck('name' , 'id');
 

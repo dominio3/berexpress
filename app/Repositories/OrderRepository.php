@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class OrderRepository
  * @package App\Repositories
- * @version May 26, 2019, 1:39 pm -03
+ * @version June 6, 2019, 6:47 pm -03
  *
  * @method Order findWithoutFail($id, $columns = ['*'])
  * @method Order find($id, $columns = ['*'])
@@ -30,6 +30,7 @@ class OrderRepository extends BaseRepository
         'takes',
         'rain',
         'bulk',
+        'priority',
         'observations',
         'subtotal',
         'status',

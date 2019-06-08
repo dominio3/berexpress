@@ -21,11 +21,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          type="string"
  *      ),
  *      @SWG\Property(
- *          property="priority",
- *          description="priority",
- *          type="string"
- *      ),
- *      @SWG\Property(
  *          property="line01",
  *          description="line01",
  *          type="integer",
@@ -52,36 +47,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      @SWG\Property(
  *          property="line05",
  *          description="line05",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="line06",
- *          description="line06",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="line07",
- *          description="line07",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="line08",
- *          description="line08",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="line09",
- *          description="line09",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="line10",
- *          description="line10",
  *          type="integer",
  *          format="int32"
  *      ),
@@ -119,17 +84,11 @@ class Consignement extends Model
 
     public $fillable = [
         'document',
-        'priority',
         'line01',
         'line02',
         'line03',
         'line04',
         'line05',
-        'line06',
-        'line07',
-        'line08',
-        'line09',
-        'line10',
         'total_price',
         'status',
         'users_id'
@@ -143,17 +102,11 @@ class Consignement extends Model
     protected $casts = [
         'id' => 'integer',
         'document' => 'string',
-        'priority' => 'string',
         'line01' => 'integer',
         'line02' => 'integer',
         'line03' => 'integer',
         'line04' => 'integer',
         'line05' => 'integer',
-        'line06' => 'integer',
-        'line07' => 'integer',
-        'line08' => 'integer',
-        'line09' => 'integer',
-        'line10' => 'integer',
         'total_price' => 'float',
         'status' => 'string',
         'users_id' => 'integer'
@@ -167,6 +120,14 @@ class Consignement extends Model
     public static $rules = [
 
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -189,7 +150,7 @@ class Consignement extends Model
      **/
     public function line03()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo(\App\Models\Order::class);
     }
 
     /**
@@ -204,14 +165,6 @@ class Consignement extends Model
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
     public function line05()
-    {
-        return $this->belongsTo(\App\Models\Order::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function order()
     {
         return $this->belongsTo(\App\Models\Order::class);
     }

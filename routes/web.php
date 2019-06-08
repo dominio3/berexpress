@@ -37,3 +37,7 @@ Route::resource('moveTasks', 'MoveTaskController');
 Route::resource('consignements', 'ConsignementController');
 
 Route::resource('locations', 'LocationController');
+
+Route::resource('orders', 'OrderController');
+
+Route::resource('consignements', 'ConsignementController');

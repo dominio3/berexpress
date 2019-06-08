@@ -43,17 +43,11 @@ trait MakeConsignementTrait
 
         return array_merge([
             'document' => $fake->word,
-            'priority' => $fake->word,
             'line01' => $fake->randomDigitNotNull,
             'line02' => $fake->randomDigitNotNull,
             'line03' => $fake->randomDigitNotNull,
             'line04' => $fake->randomDigitNotNull,
             'line05' => $fake->randomDigitNotNull,
-            'line06' => $fake->randomDigitNotNull,
-            'line07' => $fake->randomDigitNotNull,
-            'line08' => $fake->randomDigitNotNull,
-            'line09' => $fake->randomDigitNotNull,
-            'line10' => $fake->randomDigitNotNull,
             'total_price' => $fake->randomDigitNotNull,
             'status' => $fake->word,
             'users_id' => $fake->randomDigitNotNull,

@@ -82,6 +82,7 @@ class OrderDataTable extends DataTable
             'takes' => ['name' => 'takes', 'data' => 'takes'],
             'rain' => ['name' => 'rain', 'data' => 'rain'],
             'bulk' => ['name' => 'bulk', 'data' => 'bulk'],
+            'priority' => ['name' => 'priority', 'data' => 'priority'],
             'observations' => ['name' => 'observations', 'data' => 'observations'],
             'subtotal' => ['name' => 'subtotal', 'data' => 'subtotal'],
             'status' => ['name' => 'status', 'data' => 'status'],

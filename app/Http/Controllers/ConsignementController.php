@@ -39,9 +39,7 @@ class ConsignementController extends AppBaseController
      */
     public function create()
     {
-        $locations = \App\Models\Location::pluck('description' , 'id');
-        $states = ([ 'Habilitado' => 'Habilitado' , 'Inhabilitado' =>'Inhabilitado' ]);
-        return view('consignements.create' , compact('locations'));
+        return view('consignements.create');
     }
 
     /**
@@ -71,7 +69,6 @@ class ConsignementController extends AppBaseController
      */
     public function show($id)
     {
-        $locations = \App\Models\Location::pluck('description' , 'id');
         $consignement = $this->consignementRepository->findWithoutFail($id);
 
         if (empty($consignement)) {
@@ -80,7 +77,7 @@ class ConsignementController extends AppBaseController
             return redirect(route('consignements.index'));
         }
 
-        return view('consignements.show')->with('consignement', $consignement, compact('locations'));
+        return view('consignements.show')->with('consignement', $consignement);
     }
 
     /**
@@ -92,7 +89,6 @@ class ConsignementController extends AppBaseController
      */
     public function edit($id)
     {
-        $locations = \App\Models\Location::pluck('description' , 'id');
         $consignement = $this->consignementRepository->findWithoutFail($id);
 
         if (empty($consignement)) {
@@ -101,7 +97,7 @@ class ConsignementController extends AppBaseController
             return redirect(route('consignements.index'));
         }
 
-        return view('consignements.edit')->with('consignement', $consignement, compact('locations'));
+        return view('consignements.edit')->with('consignement', $consignement);
     }
 
     /**

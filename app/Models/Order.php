@@ -67,6 +67,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="int32"
  *      ),
  *      @SWG\Property(
+ *          property="priority",
+ *          description="priority",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
  *          property="observations",
  *          description="observations",
  *          type="string"
@@ -114,6 +119,7 @@ class Order extends Model
         'takes',
         'rain',
         'bulk',
+        'priority',
         'observations',
         'subtotal',
         'status',
@@ -136,6 +142,7 @@ class Order extends Model
         'contact_phone' => 'string',
         'rain' => 'string',
         'bulk' => 'integer',
+        'priority' => 'string',
         'observations' => 'string',
         'subtotal' => 'float',
         'status' => 'string',
@@ -175,9 +182,6 @@ class Order extends Model
         return $this->belongsTo(\App\Models\Location::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
     public function destination()
     {
         return $this->belongsTo(\App\Models\Location::class);
@@ -186,13 +190,9 @@ class Order extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function consignements()
+    public function consignement()
     {
         return $this->hasMany(\App\Models\Consignement::class);
     }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
 
 }

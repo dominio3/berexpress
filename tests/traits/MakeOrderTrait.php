@@ -52,10 +52,14 @@ trait MakeOrderTrait
             'takes' => $fake->word,
             'rain' => $fake->word,
             'bulk' => $fake->randomDigitNotNull,
+            'priority' => $fake->word,
             'observations' => $fake->text,
             'subtotal' => $fake->randomDigitNotNull,
             'status' => $fake->word,
-            'users_id' => $fake->randomDigitNotNull
+            'users_id' => $fake->randomDigitNotNull,
+            'created_at' => $fake->date('Y-m-d H:i:s'),
+            'updated_at' => $fake->date('Y-m-d H:i:s'),
+            'deleted_at' => $fake->date('Y-m-d H:i:s')
         ], $orderFields);
     }
 }

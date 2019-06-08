@@ -22,17 +22,6 @@
         "inIndex": true
     },
     {
-        "name": "priority",
-        "dbType": "string",
-        "htmlType": "text",
-        "validations": null,
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true
-    },
-    {
         "name": "line01",
         "dbType": "integer,false",
         "htmlType": null,
@@ -78,61 +67,6 @@
     },
     {
         "name": "line05",
-        "dbType": "integer,false",
-        "htmlType": null,
-        "validations": null,
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true
-    },
-    {
-        "name": "line06",
-        "dbType": "integer,false",
-        "htmlType": null,
-        "validations": null,
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true
-    },
-    {
-        "name": "line07",
-        "dbType": "integer,false",
-        "htmlType": null,
-        "validations": null,
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true
-    },
-    {
-        "name": "line08",
-        "dbType": "integer,false",
-        "htmlType": null,
-        "validations": null,
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true
-    },
-    {
-        "name": "line09",
-        "dbType": "integer,false",
-        "htmlType": null,
-        "validations": null,
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true
-    },
-    {
-        "name": "line10",
         "dbType": "integer,false",
         "htmlType": null,
         "validations": null,
@@ -210,27 +144,7 @@
     },
     {
         "type": "relation",
-        "relation": "mt1,Order"
-    },
-    {
-        "type": "relation",
-        "relation": "mt1,Order"
-    },
-    {
-        "type": "relation",
         "relation": "mt1,User"
-    },
-    {
-        "type": "relation",
-        "relation": "mt1,Order"
-    },
-    {
-        "type": "relation",
-        "relation": "mt1,Order"
-    },
-    {
-        "type": "relation",
-        "relation": "mt1,Order"
     },
     {
         "type": "relation",

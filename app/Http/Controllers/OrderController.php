@@ -39,13 +39,15 @@ class OrderController extends AppBaseController
      */
     public function create()
     {
-        $locations = \App\Models\Location::pluck('description' , 'id');
         $services = \App\Models\Service::pluck('description' , 'id');
-        $status = ([ 'Creado'=>'Creado','Asignado'=>'Asignado','En viaje a Origen'=>'En viaje a Origen',
+        $origin = \App\Models\Location::pluck('description' , 'id');
+        $destination = \App\Models\Location::pluck('description' , 'id');
+        $priority = (['Normal'=>'Normal', 'Urgente'=>'Urgente']);
+        $status = (['Creado'=> 'Creado','Asignado' => 'Asignado','En viaje a Origen' => 'En viaje a Origen',
         'Retirado'=>'Retirado','En viaje a Destino'=>'En viaje a Destino',
-        'Entregado'=>'Entregado','Completado'=>'Completado' ]);
+        'Entregado'=>'Entregado','Completado'=>'Completado']);
         $users = \App\Models\User::pluck('name' , 'id');
-        return view('orders.create', compact('locations' , 'services' , 'status' , 'users'));
+        return view('orders.create' , compact('services' , 'origin' , 'destination' , 'priority' , 'status' , 'users'));
     }
 
     /**
@@ -75,22 +77,24 @@ class OrderController extends AppBaseController
      */
     public function show($id)
     {
-        $order = $this->orderRepository->findWithoutFail($id);
-        $locations = \App\Models\Location::pluck('description' , 'id');
         $services = \App\Models\Service::pluck('description' , 'id');
-        $status = ([ 'Creado'=>'Creado','Asignado'=>'Asignado','En viaje a Origen'=>'En viaje a Origen',
+        $origin = \App\Models\Location::pluck('description' , 'id');
+        $destination = \App\Models\Location::pluck('description' , 'id');
+        $priority = (['Normal'=>'Normal', 'Urgente'=>'Urgente']);
+        $status = (['Creado'=> 'Creado','Asignado' => 'Asignado','En viaje a Origen' => 'En viaje a Origen',
         'Retirado'=>'Retirado','En viaje a Destino'=>'En viaje a Destino',
-        'Entregado'=>'Entregado','Completado'=>'Completado' ]);
+        'Entregado'=>'Entregado','Completado'=>'Completado']);
         $users = \App\Models\User::pluck('name' , 'id');
+        $order = $this->orderRepository->findWithoutFail($id);
+
         if (empty($order)) {
             Flash::error('Order not found');
 
             return redirect(route('orders.index'));
         }
 
-        return view('orders.show')->with('order', $order, 'locations' , 'services', 'status' , 'users');
+        return view('orders.show')->with('order', $order)->with('services', $services, 'origin' , 'destination' , 'priority', 'status' ,'users');
     }
-
     /**
      * Show the form for editing the specified Order.
      *
@@ -100,20 +104,22 @@ class OrderController extends AppBaseController
      */
     public function edit($id)
     {
-        $order = $this->orderRepository->findWithoutFail($id);
-        $locations = \App\Models\Location::pluck('description' , 'id');
         $services = \App\Models\Service::pluck('description' , 'id');
-        $status = ([ 'Creado'=>'Creado','Asignado'=>'Asignado','En viaje a Origen'=>'En viaje a Origen',
+        $origin = \App\Models\Location::pluck('description' , 'id');
+        $destination = \App\Models\Location::pluck('description' , 'id');
+        $status = (['Creado'=> 'Creado','Asignado' => 'Asignado','En viaje a Origen' => 'En viaje a Origen',
         'Retirado'=>'Retirado','En viaje a Destino'=>'En viaje a Destino',
-        'Entregado'=>'Entregado','Completado'=>'Completado' ]);
+        'Entregado'=>'Entregado','Completado'=>'Completado']);
         $users = \App\Models\User::pluck('name' , 'id');
+        $order = $this->orderRepository->findWithoutFail($id);
+
         if (empty($order)) {
             Flash::error('Order not found');
 
             return redirect(route('orders.index'));
         }
 
-        return view('orders.edit')->with('order', $order , 'locations' , 'services', 'status' , 'users');
+        return view('orders.edit')->with('order', $order)->with('services', $services , 'origin' , 'destination', 'priority', 'status' , 'users');
     }
 
     /**
@@ -126,6 +132,7 @@ class OrderController extends AppBaseController
      */
     public function update($id, UpdateOrderRequest $request)
     {
+
         $order = $this->orderRepository->findWithoutFail($id);
 
         if (empty($order)) {

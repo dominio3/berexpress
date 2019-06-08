@@ -39,7 +39,9 @@ class UserController extends AppBaseController
      */
     public function create()
     {
-        return view('users.create');
+      $roles = ([ 'SuperUser' => 'SuperUser' , 'Administrativo' => 'Administrativo',
+      'Cadete' => 'Cadete' , 'Cliente' => 'Cliente' , 'Invitado' => 'Invitado']);
+        return view('users.create' , compact('roles'));
     }
 
     /**
@@ -69,7 +71,10 @@ class UserController extends AppBaseController
      */
     public function show($id)
     {
+
         $user = $this->userRepository->findWithoutFail($id);
+        $roles = ([ 'SuperUser' => 'SuperUser' , 'Administrativo' => 'Administrativo',
+        'Cadete' => 'Cadete' , 'Cliente' => 'Cliente' , 'Invitado' => 'Invitado']);
 
         if (empty($user)) {
             Flash::error('User not found');
@@ -77,7 +82,7 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        return view('users.show')->with('user', $user);
+        return view('users.show')->with('user', $user)->with(compact('roles'));
     }
 
     /**
@@ -89,6 +94,7 @@ class UserController extends AppBaseController
      */
     public function edit($id)
     {
+      $roles = ([ 'SuperUser' => 'SuperUser' , 'Administrativo' => 'Administrativo', 'Cadete' => 'Cadete' , 'Cliente' => 'Cliente' , 'Invitado' => 'Invitado']);
         $user = $this->userRepository->findWithoutFail($id);
 
         if (empty($user)) {
@@ -97,7 +103,7 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        return view('users.edit')->with('user', $user);
+        return view('users.edit')->with('user', $user)->with(compact('roles'));
     }
 
     /**

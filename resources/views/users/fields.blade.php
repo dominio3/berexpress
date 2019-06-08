@@ -1,3 +1,5 @@
+
+
 <!-- Name Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('name', 'Name:') !!}
@@ -13,13 +15,13 @@
 <!-- Password Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('password', 'Password:') !!}
-    {!! Form::password('password', ['class' => 'form-control']) !!}
+    {!! Form::password('password', ['class' => 'form-control', 'disabled']) !!}
 </div>
 
 <!-- Remember Token Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('remember_token', 'Remember Token:') !!}
-    {!! Form::text('remember_token', null, ['class' => 'form-control']) !!}
+    {!! Form::text('remember_token', null, ['class' => 'form-control', 'disabled']) !!}
 </div>
 
 <!-- Address Field -->
@@ -49,7 +51,7 @@
 <!-- Role Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('role', 'Role:') !!}
-    {!! Form::text('role', null, ['class' => 'form-control']) !!}
+    {!! Form::select('role', $roles , null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Image Field -->

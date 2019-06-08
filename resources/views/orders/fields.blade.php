@@ -7,25 +7,25 @@
 <!-- Services Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('services_id', 'Services Id:') !!}
-    {!! Form::select('services_id', $services , null, ['class' => 'form-control', 'placeholder' => 'Seleccione Servicio' /*,'onChange'=> calculosubtotal()*/])  !!}
+    {!! Form::select('services_id', $services ,  null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Origin Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('origin', 'Origin:') !!}
-    {!! Form::select('origin', $locations , null, ['class' => 'form-control', 'placeholder' => 'Seleccione Origen']) !!}
+    {!! Form::select('origin', $origin ,  null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Destination Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('destination', 'Destination:') !!}
-    {!! Form::select('destination', $locations , null, ['class' => 'form-control', 'placeholder' => 'Seleccione Destino']) !!}
+    {!! Form::select('destination', $destination , null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Distance Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('distance', 'Distance:') !!}
-    {!! Form::number('distance', null, ['class' => 'form-control', 'readonly' => 'true']) !!}
+    {!! Form::number('distance', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Contact Name Field -->
@@ -43,19 +43,25 @@
 <!-- Takes Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('takes', 'Takes:') !!}
-    {!! Form::text('takes', null, ['class' => 'form-control','readonly' => 'true']) !!}
+    {!! Form::text('takes', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Rain Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('rain', 'Rain:') !!}
-    {!! Form::text('rain', null, ['class' => 'form-control','readonly' => 'true']) !!}
+    {!! Form::text('rain', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Bulk Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('bulk', 'Bulk:') !!}
-    {!! Form::number('bulk', 0 , ['class' => 'form-control']) !!}
+    {!! Form::number('bulk', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Priority Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('priority', 'Priority:') !!}
+    {!! Form::select('priority',$priority , null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Observations Field -->
@@ -67,19 +73,19 @@
 <!-- Subtotal Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('subtotal', 'Subtotal:') !!}
-    {!! Form::number('subtotal', null, ['id'=>'subtotal' , 'class' => 'form-control']) !!}
+    {!! Form::number('subtotal', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Status Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('status', 'Status:') !!}
-    {!! Form::select('status', $status, null, ['class' => 'form-control' , 'readonly' => 'true']) !!}
+    {!! Form::select('status',  $status , null, ['class' => 'form-control' ]) !!}
 </div>
 
 <!-- Users Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('users_id', 'Creado Por') !!}
-    {!! Form::select('users_id', $users ,  null, ['class' => 'form-control']) !!}
+    
+    {!! Form::number('users_id', Auth::user()->id , ['class' => 'form-control hidden']) !!}
 </div>
 
 <!-- Submit Field -->

@@ -64,6 +64,12 @@
     <p>{!! $order->bulk !!}</p>
 </div>
 
+<!-- Priority Field -->
+<div class="form-group">
+    {!! Form::label('priority', 'Priority:') !!}
+    <p>{!! $order->priority !!}</p>
+</div>
+
 <!-- Observations Field -->
 <div class="form-group">
     {!! Form::label('observations', 'Observations:') !!}
@@ -86,5 +92,23 @@
 <div class="form-group">
     {!! Form::label('users_id', 'Users Id:') !!}
     <p>{!! $order->users_id !!}</p>
+</div>
+
+<!-- Created At Field -->
+<div class="form-group">
+    {!! Form::label('created_at', 'Created At:') !!}
+    <p>{!! $order->created_at !!}</p>
+</div>
+
+<!-- Updated At Field -->
+<div class="form-group">
+    {!! Form::label('updated_at', 'Updated At:') !!}
+    <p>{!! $order->updated_at !!}</p>
+</div>
+
+<!-- Deleted At Field -->
+<div class="form-group">
+    {!! Form::label('deleted_at', 'Deleted At:') !!}
+    <p>{!! $order->deleted_at !!}</p>
 </div>
 

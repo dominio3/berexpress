@@ -10,12 +10,6 @@
     <p>{!! $consignement->document !!}</p>
 </div>
 
-<!-- Priority Field -->
-<div class="form-group">
-    {!! Form::label('priority', 'Priority:') !!}
-    <p>{!! $consignement->priority !!}</p>
-</div>
-
 <!-- Line01 Field -->
 <div class="form-group">
     {!! Form::label('line01', 'Line01:') !!}
@@ -44,36 +38,6 @@
 <div class="form-group">
     {!! Form::label('line05', 'Line05:') !!}
     <p>{!! $consignement->line05 !!}</p>
-</div>
-
-<!-- Line06 Field -->
-<div class="form-group">
-    {!! Form::label('line06', 'Line06:') !!}
-    <p>{!! $consignement->line06 !!}</p>
-</div>
-
-<!-- Line07 Field -->
-<div class="form-group">
-    {!! Form::label('line07', 'Line07:') !!}
-    <p>{!! $consignement->line07 !!}</p>
-</div>
-
-<!-- Line08 Field -->
-<div class="form-group">
-    {!! Form::label('line08', 'Line08:') !!}
-    <p>{!! $consignement->line08 !!}</p>
-</div>
-
-<!-- Line09 Field -->
-<div class="form-group">
-    {!! Form::label('line09', 'Line09:') !!}
-    <p>{!! $consignement->line09 !!}</p>
-</div>
-
-<!-- Line10 Field -->
-<div class="form-group">
-    {!! Form::label('line10', 'Line10:') !!}
-    <p>{!! $consignement->line10 !!}</p>
 </div>
 
 <!-- Total Price Field -->
