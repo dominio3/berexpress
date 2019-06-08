@@ -42,9 +42,11 @@ class OrderController extends AppBaseController
     public function create()
     {
         $services = \App\Models\Service::pluck('description' , 'id');
+        //notas:solo muestro locations de usuario logeado
         $origin = \App\Models\Location::where('users_id','=',Auth::user()->id)->pluck('description' , 'id');
         $destination = \App\Models\Location::where('users_id','=',Auth::user()->id)->pluck('description' , 'id');
         $priority = (['Normal'=>'Normal', 'Urgente'=>'Urgente']);
+        //notas::carga de enum
         $status = (['Creado'=> 'Creado','Asignado' => 'Asignado','En viaje a Origen' => 'En viaje a Origen',
         'Retirado'=>'Retirado','En viaje a Destino'=>'En viaje a Destino',
         'Entregado'=>'Entregado','Completado'=>'Completado']);
@@ -80,8 +82,8 @@ class OrderController extends AppBaseController
     public function show($id)
     {
         $services = \App\Models\Service::pluck('description' , 'id');
-        $origin = \App\Models\Location::pluck('description' , 'id');
-        $destination = \App\Models\Location::pluck('description' , 'id')->where('users_id','=', Auth::User()->id);
+        $origin = \App\Models\Location::where('users_id','=',Auth::user()->id)->pluck('description' , 'id');
+        $destination = \App\Models\Location::where('users_id','=',Auth::user()->id)->pluck('description' , 'id');
         $priority = (['Normal'=>'Normal', 'Urgente'=>'Urgente']);
         $status = (['Creado'=> 'Creado','Asignado' => 'Asignado','En viaje a Origen' => 'En viaje a Origen',
         'Retirado'=>'Retirado','En viaje a Destino'=>'En viaje a Destino',
@@ -107,8 +109,9 @@ class OrderController extends AppBaseController
     public function edit($id)
     {
         $services = \App\Models\Service::pluck('description' , 'id');
-        $origin = \App\Models\Location::pluck('description' , 'id');
-        $destination = \App\Models\Location::pluck('description' , 'id')->where('users_id','=', Auth::User()->id);
+        $origin = \App\Models\Location::where('users_id','=',Auth::user()->id)->pluck('description' , 'id');
+        $destination = \App\Models\Location::where('users_id','=',Auth::user()->id)->pluck('description' , 'id');
+        $priority = (['Normal'=>'Normal', 'Urgente'=>'Urgente']);
         $status = (['Creado'=> 'Creado','Asignado' => 'Asignado','En viaje a Origen' => 'En viaje a Origen',
         'Retirado'=>'Retirado','En viaje a Destino'=>'En viaje a Destino',
         'Entregado'=>'Entregado','Completado'=>'Completado']);
@@ -121,7 +124,7 @@ class OrderController extends AppBaseController
             return redirect(route('orders.index'));
         }
 
-        return view('orders.edit')->with('order', $order)->with('services', $services , 'origin' , 'destination', 'priority', 'status' , 'users');
+        return view('orders.edit')->with('order', $order)->with('services', $services)->with(compact( 'origin' , 'destination', 'priority', 'status' , 'users'));
     }
 
     /**
