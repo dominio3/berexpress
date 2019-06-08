@@ -13,7 +13,7 @@
 <!-- Origin Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('origin', 'Origin:') !!}
-    {!! Form::select('origin', $origin ,  null, ['class' => 'form-control']) !!}
+    {!! Form::select('origin', $origin , null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Destination Field -->
@@ -84,7 +84,7 @@
 
 <!-- Users Id Field -->
 <div class="form-group col-sm-6">
-    
+
     {!! Form::number('users_id', Auth::user()->id , ['class' => 'form-control hidden']) !!}
 </div>
 

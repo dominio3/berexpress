@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Http\Requests\CreateOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Repositories\OrderRepository;
+//notas:importo clase para manejar usuarios
+use Illuminate\Support\Facades\Auth;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -40,8 +42,8 @@ class OrderController extends AppBaseController
     public function create()
     {
         $services = \App\Models\Service::pluck('description' , 'id');
-        $origin = \App\Models\Location::pluck('description' , 'id');
-        $destination = \App\Models\Location::pluck('description' , 'id');
+        $origin = \App\Models\Location::where('users_id','=',Auth::user()->id)->pluck('description' , 'id');
+        $destination = \App\Models\Location::where('users_id','=',Auth::user()->id)->pluck('description' , 'id');
         $priority = (['Normal'=>'Normal', 'Urgente'=>'Urgente']);
         $status = (['Creado'=> 'Creado','Asignado' => 'Asignado','En viaje a Origen' => 'En viaje a Origen',
         'Retirado'=>'Retirado','En viaje a Destino'=>'En viaje a Destino',
@@ -79,7 +81,7 @@ class OrderController extends AppBaseController
     {
         $services = \App\Models\Service::pluck('description' , 'id');
         $origin = \App\Models\Location::pluck('description' , 'id');
-        $destination = \App\Models\Location::pluck('description' , 'id');
+        $destination = \App\Models\Location::pluck('description' , 'id')->where('users_id','=', Auth::User()->id);
         $priority = (['Normal'=>'Normal', 'Urgente'=>'Urgente']);
         $status = (['Creado'=> 'Creado','Asignado' => 'Asignado','En viaje a Origen' => 'En viaje a Origen',
         'Retirado'=>'Retirado','En viaje a Destino'=>'En viaje a Destino',
@@ -106,7 +108,7 @@ class OrderController extends AppBaseController
     {
         $services = \App\Models\Service::pluck('description' , 'id');
         $origin = \App\Models\Location::pluck('description' , 'id');
-        $destination = \App\Models\Location::pluck('description' , 'id');
+        $destination = \App\Models\Location::pluck('description' , 'id')->where('users_id','=', Auth::User()->id);
         $status = (['Creado'=> 'Creado','Asignado' => 'Asignado','En viaje a Origen' => 'En viaje a Origen',
         'Retirado'=>'Retirado','En viaje a Destino'=>'En viaje a Destino',
         'Entregado'=>'Entregado','Completado'=>'Completado']);
