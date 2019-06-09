@@ -49,7 +49,7 @@
 <!-- Rain Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('rain', 'Rain:') !!}
-    {!! Form::text('rain', null, ['class' => 'form-control']) !!}
+    {!! Form::select('rain', $rain , null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Bulk Field -->
