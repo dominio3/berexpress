@@ -50,8 +50,9 @@ class OrderController extends AppBaseController
         $status = (['Creado'=> 'Creado','Asignado' => 'Asignado','En viaje a Origen' => 'En viaje a Origen',
         'Retirado'=>'Retirado','En viaje a Destino'=>'En viaje a Destino',
         'Entregado'=>'Entregado','Completado'=>'Completado']);
+        $rain = (['Si'=>'Si', 'No'=>'No']);
         $users = \App\Models\User::pluck('name' , 'id');
-        return view('orders.create' , compact('services' , 'origin' , 'destination' , 'priority' , 'status' , 'users'));
+        return view('orders.create' , compact('services' , 'origin' , 'destination' , 'priority' , 'status' , 'users' , 'rain'));
     }
 
     /**
@@ -88,6 +89,7 @@ class OrderController extends AppBaseController
         $status = (['Creado'=> 'Creado','Asignado' => 'Asignado','En viaje a Origen' => 'En viaje a Origen',
         'Retirado'=>'Retirado','En viaje a Destino'=>'En viaje a Destino',
         'Entregado'=>'Entregado','Completado'=>'Completado']);
+        $rain = (['Si'=>'Si', 'No'=>'No']);
         $users = \App\Models\User::pluck('name' , 'id');
         $order = $this->orderRepository->findWithoutFail($id);
 
@@ -97,7 +99,7 @@ class OrderController extends AppBaseController
             return redirect(route('orders.index'));
         }
 
-        return view('orders.show')->with('order', $order)->with('services', $services, 'origin' , 'destination' , 'priority', 'status' ,'users');
+        return view('orders.show')->with('order', $order)->with('services', $services, 'origin' , 'destination' , 'priority', 'status' ,'users', 'rain');
     }
     /**
      * Show the form for editing the specified Order.
@@ -115,6 +117,7 @@ class OrderController extends AppBaseController
         $status = (['Creado'=> 'Creado','Asignado' => 'Asignado','En viaje a Origen' => 'En viaje a Origen',
         'Retirado'=>'Retirado','En viaje a Destino'=>'En viaje a Destino',
         'Entregado'=>'Entregado','Completado'=>'Completado']);
+        $rain = (['Si'=>'Si', 'No'=>'No']);
         $users = \App\Models\User::pluck('name' , 'id');
         $order = $this->orderRepository->findWithoutFail($id);
 
@@ -124,7 +127,7 @@ class OrderController extends AppBaseController
             return redirect(route('orders.index'));
         }
 
-        return view('orders.edit')->with('order', $order)->with('services', $services)->with(compact( 'origin' , 'destination', 'priority', 'status' , 'users'));
+        return view('orders.edit')->with('order', $order)->with('services', $services)->with(compact( 'origin' , 'destination', 'priority', 'status' , 'users', 'rain'));
     }
 
     /**

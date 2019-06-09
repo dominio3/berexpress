@@ -177,12 +177,8 @@ class Order extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function origin()
-    {
-        return $this->belongsTo(\App\Models\Location::class);
-    }
-
-    public function destination()
+    //notas: Por mas que tenga varias FK en mi tabla solo la declaro una vez
+    public function location()
     {
         return $this->belongsTo(\App\Models\Location::class);
     }

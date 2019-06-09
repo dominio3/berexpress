@@ -6,6 +6,8 @@ use App\Models\Order;
 use Form;
 use Yajra\Datatables\Services\DataTable;
 
+use App\Repositories\OrderRepository;
+
 class OrderDataTable extends DataTable
 {
 
