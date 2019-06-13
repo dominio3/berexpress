@@ -1,3 +1,6 @@
+<!-- BODY
+    http://localhost/berexpress/public/users/:id -->
+
 <!-- Id Field -->
 <div class="form-group">
     {!! Form::label('id', 'Id:') !!}
@@ -6,37 +9,39 @@
 
 <!-- Name Field -->
 <div class="form-group">
-    {!! Form::label('name', 'Name:') !!}
+    {!! Form::label('name', 'Nombre:') !!}
     <p>{!! $user->name !!}</p>
 </div>
 
 <!-- Email Field -->
 <div class="form-group">
-    {!! Form::label('email', 'Email:') !!}
+    {!! Form::label('email', 'E-mail:') !!}
     <p>{!! $user->email !!}</p>
 </div>
 
-<!-- Password Field -->
+<!-- Password Field 
 <div class="form-group">
     {!! Form::label('password', 'Password:') !!}
     <p>{!! $user->password !!}</p>
 </div>
+-->
 
-<!-- Remember Token Field -->
+<!-- Remember Token Field 
 <div class="form-group">
     {!! Form::label('remember_token', 'Remember Token:') !!}
     <p>{!! $user->remember_token !!}</p>
 </div>
+-->
 
 <!-- Address Field -->
 <div class="form-group">
-    {!! Form::label('address', 'Address:') !!}
+    {!! Form::label('address', 'Calle:') !!}
     <p>{!! $user->address !!}</p>
 </div>
 
 <!-- Number Field -->
 <div class="form-group">
-    {!! Form::label('number', 'Number:') !!}
+    {!! Form::label('number', 'Numero puerta:') !!}
     <p>{!! $user->number !!}</p>
 </div>
 
@@ -48,43 +53,43 @@
 
 <!-- Phone Field -->
 <div class="form-group">
-    {!! Form::label('phone', 'Phone:') !!}
+    {!! Form::label('phone', 'Telefono:') !!}
     <p>{!! $user->phone !!}</p>
 </div>
 
 <!-- Role Field -->
 <div class="form-group">
-    {!! Form::label('role', 'Role:') !!}
+    {!! Form::label('role', 'Rol:') !!}
     <p>{!! $user->role !!}</p>
 </div>
 
 <!-- Image Field -->
 <div class="form-group">
-    {!! Form::label('image', 'Image:') !!}
+    {!! Form::label('image', 'Foto:') !!}
     <p>{!! $user->image !!}</p>
 </div>
 
 <!-- Visibility Field -->
 <div class="form-group">
-    {!! Form::label('visibility', 'Visibility:') !!}
+    {!! Form::label('visibility', 'Visibilidad:') !!}
     <p>{!! $user->visibility !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
+    {!! Form::label('updated_at', 'Actualizado:') !!}
     <p>{!! $user->updated_at !!}</p>
 </div>
 
 <!-- Created At Field -->
 <div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
+    {!! Form::label('created_at', 'Creado:') !!}
     <p>{!! $user->created_at !!}</p>
 </div>
 
 <!-- Deleted At Field -->
 <div class="form-group">
-    {!! Form::label('deleted_at', 'Deleted At:') !!}
+    {!! Form::label('deleted_at', 'Eliminado:') !!}
     <p>{!! $user->deleted_at !!}</p>
 </div>
 

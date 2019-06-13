@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>StartUp</title>
+    <title>Berexpress</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -94,7 +94,7 @@
   </div>
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/home') }}"><b>StartUp </b>Is Now</a>
+        <a href="{{ url('/home') }}"><b>Berexpress </b></a>
     </div>
 
     <!-- /.login-logo -->
@@ -128,20 +128,20 @@
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            <input type="checkbox" name="remember"> Remember Me
+                            <input type="checkbox" name="remember"> Recordarme
                         </label>
                     </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar sesión</button>
                 </div>
                 <!-- /.col -->
             </div>
         </form>
 
-        <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
-        <a href="{{ url('/register') }}" class="text-center">Register a new membership</a>
+        <a href="{{ url('/password/reset') }}">Olvidé mi contraseña</a><br>
+        <a href="{{ url('/register') }}" class="text-center">Registrar un nuevo usuario</a>
 
     </div>
     <!-- /.login-box-body -->

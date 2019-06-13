@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>StartUp</title>
+    <title>Berexpress</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -94,12 +94,12 @@
   </div>
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/home') }}"><b>StartUp </b>Is Now</a>
+        <a href="{{ url('/home') }}"><b>Berexpress </b> </a>
     </div>
 
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Enter Email to reset password</p>
+        <p class="login-box-msg">Ingrese su E-mail para restablecer la contraseña</p>
 
         @if (session('status'))
             <div class="alert alert-success">
@@ -123,7 +123,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary pull-right">
-                        <i class="fa fa-btn fa-envelope"></i> Send Password Reset Link
+                        <i class="fa fa-btn fa-envelope"></i> Enviar enlace para restablecer la contraseña
                     </button>
                 </div>
             </div>

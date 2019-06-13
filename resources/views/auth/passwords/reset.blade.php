@@ -94,12 +94,12 @@
   </div>
   <div class="login-box">
       <div class="login-logo">
-          <a href="{{ url('/home') }}"><b>StartUp </b>Is Now</a>
+          <a href="{{ url('/home') }}"><b>Berexpress </b> </a>
       </div>
 
       <!-- /.login-logo -->
       <div class="login-box-body">
-          <p class="login-box-msg">Reset your password</p>
+          <p class="login-box-msg">Restablece tu contraseña</p>
 
           <form method="post" action="{{ url('/password/reset') }}">
               {!! csrf_field() !!}

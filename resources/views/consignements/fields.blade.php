@@ -1,6 +1,6 @@
 <!-- Document Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('document', 'Document:') !!}
+    {!! Form::label('document', 'Documento:') !!}
     {!! Form::text('document', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -36,24 +36,24 @@
 
 <!-- Total Price Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('total_price', 'Total Price:') !!}
+    {!! Form::label('total_price', 'Precio total:') !!}
     {!! Form::number('total_price', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Status Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('status', 'Status:') !!}
+    {!! Form::label('status', 'Estado:') !!}
     {!! Form::text('status', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Users Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('users_id', 'Users Id:') !!}
+    {!! Form::label('users_id', 'Id usuario:') !!}
     {!! Form::number('users_id', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('consignements.index') !!}" class="btn btn-default">Cancel</a>
+    {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
+    <a href="{!! route('consignements.index') !!}" class="btn btn-default">Cancelar</a>
 </div>
