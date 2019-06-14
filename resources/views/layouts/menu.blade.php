@@ -3,20 +3,45 @@
 </li>
 
 <li class="{{ Request::is('services*') ? 'active' : '' }}">
-    <a href="{!! route('services.index') !!}"><i class="fa fa-edit"></i><span>Servicios y Costos</span></a>
+    @if (Auth::user()->role === 'Administrador' || Auth::user()->role === 'Cliente')
+        <a href="{!! route('services.index') !!}"><i class="fa fa-edit"></i><span>Servicios y Costos</span></a>
+    @else
+        <!-- VER SOLO PEDIDOS DEL USER CADETE -->
+        <span></span>
+    @endif
 </li>
 
 <li class="{{ Request::is('orders*') ? 'active' : '' }}">
-    <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Pedidos</span></a>
+    @if (Auth::user()->role === 'Administrador')
+        <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Pedidos</span></a>
+    @elseif (Auth::user()->role === 'Cliente')
+        <!-- VER SOLO PEDIDOS DEL USER CLIENTE -->
+        <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Mis Pedidos (falta implementar)</span></a>
+    @else
+        <!-- VER SOLO PEDIDOS DEL USER CADETE -->
+        <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Mis Pedidos (falta implementar)</span></a>
+    @endif
 </li>
 
 <li class="{{ Request::is('consignements*') ? 'active' : '' }}">
-    <a href="{!! route('consignements.index') !!}"><i class="fa fa-edit"></i><span>Consignaciones</span></a>
+    @if (Auth::user()->role === 'Administrador')
+        <a href="{!! route('consignements.index') !!}"><i class="fa fa-edit"></i><span>Consignaciones</span></a>
+    @else
+        <span></span>
+    @endif
 </li>
 
 <li class="{{ Request::is('moveTasks*') ? 'active' : '' }}">
-    <a href="{!! route('moveTasks.index') !!}"><i class="fa fa-edit"></i><span>Tareas Pendientes</span></a>
+    @if (Auth::user()->role === 'Administrador')
+        <a href="{!! route('moveTasks.index') !!}"><i class="fa fa-edit"></i><span>Tareas Pendientes</span></a>
+    @else
+        <span></span>
+    @endif 
 </li>
 <li class="{{ Request::is('users*') ? 'active' : '' }}">
-    <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>Usuarios</span></a>
+    @if (Auth::user()->role === 'Administrador')
+        <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>Usuarios</span></a>
+    @else
+        <span></span>
+    @endif
 </li>

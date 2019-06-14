@@ -159,7 +159,7 @@ class LocationAPIController extends AppBaseController
         $location = $this->locationRepository->findWithoutFail($id);
 
         if (empty($location)) {
-            return $this->sendError('Location not found');
+            return $this->sendError('Ubicación no encontrada');
         }
 
         return $this->sendResponse($location->toArray(), 'Ubicación recuperada con éxito');
@@ -219,7 +219,7 @@ class LocationAPIController extends AppBaseController
         $location = $this->locationRepository->findWithoutFail($id);
 
         if (empty($location)) {
-            return $this->sendError('Location not found');
+            return $this->sendError('Ubicación no encontrada');
         }
 
         $location = $this->locationRepository->update($input, $id);
