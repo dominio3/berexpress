@@ -9,7 +9,7 @@
     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
         'type' => 'submit',
         'class' => 'btn btn-danger btn-xs',
-        'onclick' => "return confirm('¿Está seguro de eliminar la orden?')"
+        'onclick' => "return confirm('¿Está seguro de eliminar el pedido?')"
     ]) !!}
 </div>
 {!! Form::close() !!}

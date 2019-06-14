@@ -65,7 +65,7 @@ class ConsignementAPIController extends AppBaseController
         $this->consignementRepository->pushCriteria(new LimitOffsetCriteria($request));
         $consignements = $this->consignementRepository->all();
 
-        return $this->sendResponse($consignements->toArray(), 'Consignements retrieved successfully');
+        return $this->sendResponse($consignements->toArray(), 'Consignaciones recuperadas con éxito');
     }
 
     /**
@@ -112,7 +112,7 @@ class ConsignementAPIController extends AppBaseController
 
         $consignements = $this->consignementRepository->create($input);
 
-        return $this->sendResponse($consignements->toArray(), 'Consignement saved successfully');
+        return $this->sendResponse($consignements->toArray(), 'Consignación guardada con éxito');
     }
 
     /**
@@ -159,10 +159,10 @@ class ConsignementAPIController extends AppBaseController
         $consignement = $this->consignementRepository->findWithoutFail($id);
 
         if (empty($consignement)) {
-            return $this->sendError('Consignement not found');
+            return $this->sendError('Consignación no encontrada');
         }
 
-        return $this->sendResponse($consignement->toArray(), 'Consignement retrieved successfully');
+        return $this->sendResponse($consignement->toArray(), 'Consignación recuperada con éxito');
     }
 
     /**
@@ -219,12 +219,12 @@ class ConsignementAPIController extends AppBaseController
         $consignement = $this->consignementRepository->findWithoutFail($id);
 
         if (empty($consignement)) {
-            return $this->sendError('Consignement not found');
+            return $this->sendError('Consignación no encontrada');
         }
 
         $consignement = $this->consignementRepository->update($input, $id);
 
-        return $this->sendResponse($consignement->toArray(), 'Consignement updated successfully');
+        return $this->sendResponse($consignement->toArray(), 'Consignación actualizada con éxito');
     }
 
     /**
@@ -271,11 +271,11 @@ class ConsignementAPIController extends AppBaseController
         $consignement = $this->consignementRepository->findWithoutFail($id);
 
         if (empty($consignement)) {
-            return $this->sendError('Consignement not found');
+            return $this->sendError('Consignación no encontrada');
         }
 
         $consignement->delete();
 
-        return $this->sendResponse($id, 'Consignement deleted successfully');
+        return $this->sendResponse($id, 'Consignación eliminada con éxito');
     }
 }

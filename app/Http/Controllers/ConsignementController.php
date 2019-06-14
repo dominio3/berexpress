@@ -55,7 +55,7 @@ class ConsignementController extends AppBaseController
 
         $consignement = $this->consignementRepository->create($input);
 
-        Flash::success('Consignement saved successfully.');
+        Flash::success('Consignación guardada con éxito.');
 
         return redirect(route('consignements.index'));
     }
@@ -72,7 +72,7 @@ class ConsignementController extends AppBaseController
         $consignement = $this->consignementRepository->findWithoutFail($id);
 
         if (empty($consignement)) {
-            Flash::error('Consignement not found');
+            Flash::error('Consignación no encontrada');
 
             return redirect(route('consignements.index'));
         }
@@ -92,7 +92,7 @@ class ConsignementController extends AppBaseController
         $consignement = $this->consignementRepository->findWithoutFail($id);
 
         if (empty($consignement)) {
-            Flash::error('Consignement not found');
+            Flash::error('Consignación no encontrada');
 
             return redirect(route('consignements.index'));
         }
@@ -113,14 +113,14 @@ class ConsignementController extends AppBaseController
         $consignement = $this->consignementRepository->findWithoutFail($id);
 
         if (empty($consignement)) {
-            Flash::error('Consignement not found');
+            Flash::error('Consignación no encontrada');
 
             return redirect(route('consignements.index'));
         }
 
         $consignement = $this->consignementRepository->update($request->all(), $id);
 
-        Flash::success('Consignement updated successfully.');
+        Flash::success('Consignación actualizada con éxito.');
 
         return redirect(route('consignements.index'));
     }
@@ -137,14 +137,14 @@ class ConsignementController extends AppBaseController
         $consignement = $this->consignementRepository->findWithoutFail($id);
 
         if (empty($consignement)) {
-            Flash::error('Consignement not found');
+            Flash::error('Consignación no encontrada');
 
             return redirect(route('consignements.index'));
         }
 
         $this->consignementRepository->delete($id);
 
-        Flash::success('Consignement deleted successfully.');
+        Flash::success('Consignación eliminada con éxito.');
 
         return redirect(route('consignements.index'));
     }

@@ -65,7 +65,7 @@ class LocationAPIController extends AppBaseController
         $this->locationRepository->pushCriteria(new LimitOffsetCriteria($request));
         $locations = $this->locationRepository->all();
 
-        return $this->sendResponse($locations->toArray(), 'Locations retrieved successfully');
+        return $this->sendResponse($locations->toArray(), 'Ubicaciones recuperadas con éxito');
     }
 
     /**
@@ -112,7 +112,7 @@ class LocationAPIController extends AppBaseController
 
         $locations = $this->locationRepository->create($input);
 
-        return $this->sendResponse($locations->toArray(), 'Location saved successfully');
+        return $this->sendResponse($locations->toArray(), 'Ubicación guardada con éxito');
     }
 
     /**
@@ -162,7 +162,7 @@ class LocationAPIController extends AppBaseController
             return $this->sendError('Location not found');
         }
 
-        return $this->sendResponse($location->toArray(), 'Location retrieved successfully');
+        return $this->sendResponse($location->toArray(), 'Ubicación recuperada con éxito');
     }
 
     /**
@@ -224,7 +224,7 @@ class LocationAPIController extends AppBaseController
 
         $location = $this->locationRepository->update($input, $id);
 
-        return $this->sendResponse($location->toArray(), 'Location updated successfully');
+        return $this->sendResponse($location->toArray(), 'Ubicación actualizada con éxito');
     }
 
     /**
@@ -276,6 +276,6 @@ class LocationAPIController extends AppBaseController
 
         $location->delete();
 
-        return $this->sendResponse($id, 'Location deleted successfully');
+        return $this->sendResponse($id, 'Ubicación eliminada con éxito');
     }
 }

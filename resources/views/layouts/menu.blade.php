@@ -11,7 +11,7 @@
 </li>
 
 <li class="{{ Request::is('consignements*') ? 'active' : '' }}">
-    <a href="{!! route('consignements.index') !!}"><i class="fa fa-edit"></i><span>Ruteo</span></a>
+    <a href="{!! route('consignements.index') !!}"><i class="fa fa-edit"></i><span>Consignaciones</span></a>
 </li>
 
 <li class="{{ Request::is('moveTasks*') ? 'active' : '' }}">

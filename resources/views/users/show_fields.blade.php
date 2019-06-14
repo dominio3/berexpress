@@ -19,12 +19,11 @@
     <p>{!! $user->email !!}</p>
 </div>
 
-<!-- Password Field 
+<!-- Password Field -->
 <div class="form-group">
-    {!! Form::label('password', 'Password:') !!}
+    {!! Form::label('password', 'Contraseña:') !!}
     <p>{!! $user->password !!}</p>
 </div>
--->
 
 <!-- Remember Token Field 
 <div class="form-group">
@@ -35,25 +34,25 @@
 
 <!-- Address Field -->
 <div class="form-group">
-    {!! Form::label('address', 'Calle:') !!}
+    {!! Form::label('address', 'Calle domicilio:') !!}
     <p>{!! $user->address !!}</p>
 </div>
 
 <!-- Number Field -->
 <div class="form-group">
-    {!! Form::label('number', 'Numero puerta:') !!}
+    {!! Form::label('number', 'Número puerta:') !!}
     <p>{!! $user->number !!}</p>
 </div>
 
 <!-- State Field -->
 <div class="form-group">
-    {!! Form::label('state', 'State:') !!}
+    {!! Form::label('state', 'Localidad:') !!}
     <p>{!! $user->state !!}</p>
 </div>
 
 <!-- Phone Field -->
 <div class="form-group">
-    {!! Form::label('phone', 'Telefono:') !!}
+    {!! Form::label('phone', 'Teléfono:') !!}
     <p>{!! $user->phone !!}</p>
 </div>
 

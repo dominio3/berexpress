@@ -65,7 +65,7 @@ class MoveTaskAPIController extends AppBaseController
         $this->moveTaskRepository->pushCriteria(new LimitOffsetCriteria($request));
         $moveTasks = $this->moveTaskRepository->all();
 
-        return $this->sendResponse($moveTasks->toArray(), 'Move Tasks retrieved successfully');
+        return $this->sendResponse($moveTasks->toArray(), 'Tareas Pendientes recuperadas con éxito');
     }
 
     /**
@@ -112,7 +112,7 @@ class MoveTaskAPIController extends AppBaseController
 
         $moveTasks = $this->moveTaskRepository->create($input);
 
-        return $this->sendResponse($moveTasks->toArray(), 'Move Task saved successfully');
+        return $this->sendResponse($moveTasks->toArray(), 'Tarea Pendiente guardada con éxito');
     }
 
     /**
@@ -159,10 +159,10 @@ class MoveTaskAPIController extends AppBaseController
         $moveTask = $this->moveTaskRepository->findWithoutFail($id);
 
         if (empty($moveTask)) {
-            return $this->sendError('Move Task not found');
+            return $this->sendError('Tarea Pendiente no encontrada');
         }
 
-        return $this->sendResponse($moveTask->toArray(), 'Move Task retrieved successfully');
+        return $this->sendResponse($moveTask->toArray(), 'Tarea Pendiente recuperada con éxito');
     }
 
     /**
@@ -219,12 +219,12 @@ class MoveTaskAPIController extends AppBaseController
         $moveTask = $this->moveTaskRepository->findWithoutFail($id);
 
         if (empty($moveTask)) {
-            return $this->sendError('Move Task not found');
+            return $this->sendError('Tarea Pendiente no encontrada');
         }
 
         $moveTask = $this->moveTaskRepository->update($input, $id);
 
-        return $this->sendResponse($moveTask->toArray(), 'MoveTask updated successfully');
+        return $this->sendResponse($moveTask->toArray(), 'Tarea Pendiente actualizada con éxito');
     }
 
     /**
@@ -271,11 +271,11 @@ class MoveTaskAPIController extends AppBaseController
         $moveTask = $this->moveTaskRepository->findWithoutFail($id);
 
         if (empty($moveTask)) {
-            return $this->sendError('Move Task not found');
+            return $this->sendError('Tarea Pendiente no encontrada');
         }
 
         $moveTask->delete();
 
-        return $this->sendResponse($id, 'Move Task deleted successfully');
+        return $this->sendResponse($id, 'Tarea Pendiente eliminada con éxito');
     }
 }

@@ -56,7 +56,7 @@ class LocationController extends AppBaseController
 
         $location = $this->locationRepository->create($input);
 
-        Flash::success('Location saved successfully.');
+        Flash::success('Ubicación guardada con éxito.');
 
         return redirect(route('locations.index'));
     }
@@ -73,7 +73,7 @@ class LocationController extends AppBaseController
         $location = $this->locationRepository->findWithoutFail($id);
 
         if (empty($location)) {
-            Flash::error('Location not found');
+            Flash::error('Ubicación no encontrada');
 
             return redirect(route('locations.index'));
         }
@@ -95,7 +95,7 @@ class LocationController extends AppBaseController
         $users = \App\Models\User::pluck('name' , 'id');
 
         if (empty($location)) {
-            Flash::error('Location not found');
+            Flash::error('Ubicación no encontrada');
 
             return redirect(route('locations.index'));
         }
@@ -116,14 +116,14 @@ class LocationController extends AppBaseController
         $location = $this->locationRepository->findWithoutFail($id);
 
         if (empty($location)) {
-            Flash::error('Location not found');
+            Flash::error('Ubicación no encontrada');
 
             return redirect(route('locations.index'));
         }
 
         $location = $this->locationRepository->update($request->all(), $id);
 
-        Flash::success('Location updated successfully.');
+        Flash::success('Ubicación actualizada con éxito.');
 
         return redirect(route('locations.index'));
     }
@@ -140,14 +140,14 @@ class LocationController extends AppBaseController
         $location = $this->locationRepository->findWithoutFail($id);
 
         if (empty($location)) {
-            Flash::error('Location not found');
+            Flash::error('Ubicación no encontrada');
 
             return redirect(route('locations.index'));
         }
 
         $this->locationRepository->delete($id);
 
-        Flash::success('Location deleted successfully.');
+        Flash::success('Ubicación eliminada con éxito.');
 
         return redirect(route('locations.index'));
     }

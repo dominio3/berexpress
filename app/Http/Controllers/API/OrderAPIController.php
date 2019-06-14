@@ -65,7 +65,7 @@ class OrderAPIController extends AppBaseController
         $this->orderRepository->pushCriteria(new LimitOffsetCriteria($request));
         $orders = $this->orderRepository->all();
 
-        return $this->sendResponse($orders->toArray(), 'Orders retrieved successfully');
+        return $this->sendResponse($orders->toArray(), 'Pedidos recuperados con éxito');
     }
 
     /**
@@ -112,7 +112,7 @@ class OrderAPIController extends AppBaseController
 
         $orders = $this->orderRepository->create($input);
 
-        return $this->sendResponse($orders->toArray(), 'Order saved successfully');
+        return $this->sendResponse($orders->toArray(), 'Pedido guardado con éxito');
     }
 
     /**
@@ -159,10 +159,10 @@ class OrderAPIController extends AppBaseController
         $order = $this->orderRepository->findWithoutFail($id);
 
         if (empty($order)) {
-            return $this->sendError('Order not found');
+            return $this->sendError('Pedido no encontrado');
         }
 
-        return $this->sendResponse($order->toArray(), 'Order retrieved successfully');
+        return $this->sendResponse($order->toArray(), 'Pedido recuperado con éxito');
     }
 
     /**
@@ -219,12 +219,12 @@ class OrderAPIController extends AppBaseController
         $order = $this->orderRepository->findWithoutFail($id);
 
         if (empty($order)) {
-            return $this->sendError('Order not found');
+            return $this->sendError('Pedido no encontrado');
         }
 
         $order = $this->orderRepository->update($input, $id);
 
-        return $this->sendResponse($order->toArray(), 'Order updated successfully');
+        return $this->sendResponse($order->toArray(), 'Pedido actualizado con éxito');
     }
 
     /**
@@ -271,11 +271,11 @@ class OrderAPIController extends AppBaseController
         $order = $this->orderRepository->findWithoutFail($id);
 
         if (empty($order)) {
-            return $this->sendError('Order not found');
+            return $this->sendError('Pedido no encontrado');
         }
 
         $order->delete();
 
-        return $this->sendResponse($id, 'Order deleted successfully');
+        return $this->sendResponse($id, 'Pedido eliminado con éxito');
     }
 }

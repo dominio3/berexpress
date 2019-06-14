@@ -68,7 +68,7 @@ class OrderController extends AppBaseController
 
         $order = $this->orderRepository->create($input);
 
-        Flash::success('Order saved successfully.');
+        Flash::success('Pedido guardado con éxito.');
 
         return redirect(route('orders.index'));
     }
@@ -94,7 +94,7 @@ class OrderController extends AppBaseController
         $order = $this->orderRepository->findWithoutFail($id);
 
         if (empty($order)) {
-            Flash::error('Order not found');
+            Flash::error('Pedido no encontrado');
 
             return redirect(route('orders.index'));
         }
@@ -122,7 +122,7 @@ class OrderController extends AppBaseController
         $order = $this->orderRepository->findWithoutFail($id);
 
         if (empty($order)) {
-            Flash::error('Order not found');
+            Flash::error('Pedido no encontrado');
 
             return redirect(route('orders.index'));
         }
@@ -144,14 +144,14 @@ class OrderController extends AppBaseController
         $order = $this->orderRepository->findWithoutFail($id);
 
         if (empty($order)) {
-            Flash::error('Order not found');
+            Flash::error('Pedido no encontrado');
 
             return redirect(route('orders.index'));
         }
 
         $order = $this->orderRepository->update($request->all(), $id);
 
-        Flash::success('Order updated successfully.');
+        Flash::success('Pedido actualizado con éxito.');
 
         return redirect(route('orders.index'));
     }
@@ -168,14 +168,14 @@ class OrderController extends AppBaseController
         $order = $this->orderRepository->findWithoutFail($id);
 
         if (empty($order)) {
-            Flash::error('Order not found');
+            Flash::error('Pedido no encontrado');
 
             return redirect(route('orders.index'));
         }
 
         $this->orderRepository->delete($id);
 
-        Flash::success('Order deleted successfully.');
+        Flash::success('Pedido eliminado con éxito.');
 
         return redirect(route('orders.index'));
     }

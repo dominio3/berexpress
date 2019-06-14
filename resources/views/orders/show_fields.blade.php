@@ -6,43 +6,43 @@
 
 <!-- Date Field -->
 <div class="form-group">
-    {!! Form::label('date', 'Date:') !!}
+    {!! Form::label('date', 'Fecha:') !!}
     <p>{!! $order->date !!}</p>
 </div>
 
 <!-- Services Id Field -->
 <div class="form-group">
-    {!! Form::label('services_id', 'Services Id:') !!}
+    {!! Form::label('services_id', 'Id Servicio:') !!}
     <p>{!! $order->services_id !!}</p>
 </div>
 
 <!-- Origin Field -->
 <div class="form-group">
-    {!! Form::label('origin', 'Origin:') !!}
+    {!! Form::label('origin', 'Origen:') !!}
     <p>{!! $order->origin !!}</p>
 </div>
 
 <!-- Destination Field -->
 <div class="form-group">
-    {!! Form::label('destination', 'Destination:') !!}
+    {!! Form::label('destination', 'Destino:') !!}
     <p>{!! $order->destination !!}</p>
 </div>
 
 <!-- Distance Field -->
 <div class="form-group">
-    {!! Form::label('distance', 'Distance:') !!}
+    {!! Form::label('distance', 'Distancia:') !!}
     <p>{!! $order->distance !!}</p>
 </div>
 
 <!-- Contact Name Field -->
 <div class="form-group">
-    {!! Form::label('contact_name', 'Contact Name:') !!}
+    {!! Form::label('contact_name', 'Nombre de contacto:') !!}
     <p>{!! $order->contact_name !!}</p>
 </div>
 
 <!-- Contact Phone Field -->
 <div class="form-group">
-    {!! Form::label('contact_phone', 'Contact Phone:') !!}
+    {!! Form::label('contact_phone', 'Teléfono de contacto:') !!}
     <p>{!! $order->contact_phone !!}</p>
 </div>
 
@@ -54,25 +54,25 @@
 
 <!-- Rain Field -->
 <div class="form-group">
-    {!! Form::label('rain', 'Rain:') !!}
+    {!! Form::label('rain', 'Lluvia:') !!}
     <p>{!! $order->rain !!}</p>
 </div>
 
 <!-- Bulk Field -->
 <div class="form-group">
-    {!! Form::label('bulk', 'Bulk:') !!}
+    {!! Form::label('bulk', 'Bultos:') !!}
     <p>{!! $order->bulk !!}</p>
 </div>
 
 <!-- Priority Field -->
 <div class="form-group">
-    {!! Form::label('priority', 'Priority:') !!}
+    {!! Form::label('priority', 'Prioridad:') !!}
     <p>{!! $order->priority !!}</p>
 </div>
 
 <!-- Observations Field -->
 <div class="form-group">
-    {!! Form::label('observations', 'Observations:') !!}
+    {!! Form::label('observations', 'Observaciones:') !!}
     <p>{!! $order->observations !!}</p>
 </div>
 
@@ -84,31 +84,31 @@
 
 <!-- Status Field -->
 <div class="form-group">
-    {!! Form::label('status', 'Status:') !!}
+    {!! Form::label('status', 'Estado:') !!}
     <p>{!! $order->status !!}</p>
 </div>
 
 <!-- Users Id Field -->
 <div class="form-group">
-    {!! Form::label('users_id', 'Users Id:') !!}
+    {!! Form::label('users_id', 'Id Usuario:') !!}
     <p>{!! $order->users_id !!}</p>
 </div>
 
 <!-- Created At Field -->
 <div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
+    {!! Form::label('created_at', 'Creado:') !!}
     <p>{!! $order->created_at !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
+    {!! Form::label('updated_at', 'Actualizado:') !!}
     <p>{!! $order->updated_at !!}</p>
 </div>
 
 <!-- Deleted At Field -->
 <div class="form-group">
-    {!! Form::label('deleted_at', 'Deleted At:') !!}
+    {!! Form::label('deleted_at', 'Eliminado:') !!}
     <p>{!! $order->deleted_at !!}</p>
 </div>
 

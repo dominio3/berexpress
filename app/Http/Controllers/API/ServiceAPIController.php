@@ -65,7 +65,7 @@ class ServiceAPIController extends AppBaseController
         $this->serviceRepository->pushCriteria(new LimitOffsetCriteria($request));
         $services = $this->serviceRepository->all();
 
-        return $this->sendResponse($services->toArray(), 'Services retrieved successfully');
+        return $this->sendResponse($services->toArray(), 'Servicops recuperados con éxito');
     }
 
     /**
@@ -112,7 +112,7 @@ class ServiceAPIController extends AppBaseController
 
         $services = $this->serviceRepository->create($input);
 
-        return $this->sendResponse($services->toArray(), 'Service saved successfully');
+        return $this->sendResponse($services->toArray(), 'Servicio guardado con éxito');
     }
 
     /**
@@ -159,10 +159,10 @@ class ServiceAPIController extends AppBaseController
         $service = $this->serviceRepository->findWithoutFail($id);
 
         if (empty($service)) {
-            return $this->sendError('Service not found');
+            return $this->sendError('Servicio no encontrado');
         }
 
-        return $this->sendResponse($service->toArray(), 'Service retrieved successfully');
+        return $this->sendResponse($service->toArray(), 'Servicio recuperado con éxito');
     }
 
     /**
@@ -219,12 +219,12 @@ class ServiceAPIController extends AppBaseController
         $service = $this->serviceRepository->findWithoutFail($id);
 
         if (empty($service)) {
-            return $this->sendError('Service not found');
+            return $this->sendError('Servicio no encontrado');
         }
 
         $service = $this->serviceRepository->update($input, $id);
 
-        return $this->sendResponse($service->toArray(), 'Service updated successfully');
+        return $this->sendResponse($service->toArray(), 'Servicio actualizado con éxito');
     }
 
     /**
@@ -271,11 +271,11 @@ class ServiceAPIController extends AppBaseController
         $service = $this->serviceRepository->findWithoutFail($id);
 
         if (empty($service)) {
-            return $this->sendError('Service not found');
+            return $this->sendError('Servicio no encontrado');
         }
 
         $service->delete();
 
-        return $this->sendResponse($id, 'Service deleted successfully');
+        return $this->sendResponse($id, 'Servicio eliminado con éxito');
     }
 }

@@ -77,7 +77,7 @@ class UserController extends AppBaseController
         'Cadete' => 'Cadete' , 'Cliente' => 'Cliente' , 'Invitado' => 'Invitado']);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('Usuario no encontrado');
 
             return redirect(route('users.index'));
         }
@@ -126,7 +126,7 @@ class UserController extends AppBaseController
 
         $user = $this->userRepository->update($request->all(), $id);
 
-        Flash::success('Usuario actualizado correctamente.');
+        Flash::success('Usuario actualizado con éxito.');
 
         return redirect(route('users.index'));
     }
@@ -143,7 +143,7 @@ class UserController extends AppBaseController
         $user = $this->userRepository->findWithoutFail($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('Usuario no encontrado');
 
             return redirect(route('users.index'));
         }

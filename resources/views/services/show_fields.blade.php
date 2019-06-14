@@ -6,13 +6,13 @@
 
 <!-- Description Field -->
 <div class="form-group">
-    {!! Form::label('description', 'Description:') !!}
+    {!! Form::label('description', 'Descripción:') !!}
     <p>{!! $service->description !!}</p>
 </div>
 
 <!-- Price Field -->
 <div class="form-group">
-    {!! Form::label('price', 'Price:') !!}
+    {!! Form::label('price', 'Precio:') !!}
     <p>{!! $service->price !!}</p>
 </div>
 

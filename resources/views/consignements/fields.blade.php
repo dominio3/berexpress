@@ -48,7 +48,7 @@
 
 <!-- Users Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('users_id', 'Id usuario:') !!}
+    {!! Form::label('users_id', 'Id Usuario:') !!}
     {!! Form::number('users_id', null, ['class' => 'form-control']) !!}
 </div>
 

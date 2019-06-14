@@ -54,7 +54,7 @@
 
 <!-- Users Id Field -->
 <div class="form-group">
-    {!! Form::label('users_id', 'Id usuario:') !!}
+    {!! Form::label('users_id', 'Id Usuario:') !!}
     <p>{!! $consignement->users_id !!}</p>
 </div>
 

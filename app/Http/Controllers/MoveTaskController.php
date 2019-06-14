@@ -55,7 +55,7 @@ class MoveTaskController extends AppBaseController
 
         $moveTask = $this->moveTaskRepository->create($input);
 
-        Flash::success('Move Task saved successfully.');
+        Flash::success('Tarea Pendiente guardada con éxito.');
 
         return redirect(route('moveTasks.index'));
     }
@@ -72,7 +72,7 @@ class MoveTaskController extends AppBaseController
         $moveTask = $this->moveTaskRepository->findWithoutFail($id);
 
         if (empty($moveTask)) {
-            Flash::error('Move Task not found');
+            Flash::error('Tarea Pendiente no encontrada');
 
             return redirect(route('moveTasks.index'));
         }
@@ -92,7 +92,7 @@ class MoveTaskController extends AppBaseController
         $moveTask = $this->moveTaskRepository->findWithoutFail($id);
 
         if (empty($moveTask)) {
-            Flash::error('Move Task not found');
+            Flash::error('Tarea Pendiente no encontrada');
 
             return redirect(route('moveTasks.index'));
         }
@@ -113,14 +113,14 @@ class MoveTaskController extends AppBaseController
         $moveTask = $this->moveTaskRepository->findWithoutFail($id);
 
         if (empty($moveTask)) {
-            Flash::error('Move Task not found');
+            Flash::error('Tarea Pendiente no encontrada');
 
             return redirect(route('moveTasks.index'));
         }
 
         $moveTask = $this->moveTaskRepository->update($request->all(), $id);
 
-        Flash::success('Move Task updated successfully.');
+        Flash::success('Tarea Pendiente actualizada con éxito.');
 
         return redirect(route('moveTasks.index'));
     }
@@ -137,14 +137,14 @@ class MoveTaskController extends AppBaseController
         $moveTask = $this->moveTaskRepository->findWithoutFail($id);
 
         if (empty($moveTask)) {
-            Flash::error('Move Task not found');
+            Flash::error('Tarea Pendiente no encontrada');
 
             return redirect(route('moveTasks.index'));
         }
 
         $this->moveTaskRepository->delete($id);
 
-        Flash::success('Move Task deleted successfully.');
+        Flash::success('Tarea Pendiente eliminada con éxito.');
 
         return redirect(route('moveTasks.index'));
     }

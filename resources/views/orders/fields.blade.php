@@ -12,31 +12,31 @@
 
 <!-- Origin Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('origin', 'Origin:') !!}
+    {!! Form::label('origin', 'Origen:') !!}
     {!! Form::select('origin', $origin , null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Destination Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('destination', 'Destination:') !!}
+    {!! Form::label('destination', 'Destino:') !!}
     {!! Form::select('destination', $destination , null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Distance Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('distance', 'Distance:') !!}
+    {!! Form::label('distance', 'Distancia:') !!}
     {!! Form::number('distance', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Contact Name Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('contact_name', 'Contact Name:') !!}
+    {!! Form::label('contact_name', 'Nombre de contacto:') !!}
     {!! Form::text('contact_name', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Contact Phone Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('contact_phone', 'Contact Phone:') !!}
+    {!! Form::label('contact_phone', 'Telefono de contacto:') !!}
     {!! Form::text('contact_phone', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -48,25 +48,25 @@
 
 <!-- Rain Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('rain', 'Rain:') !!}
+    {!! Form::label('rain', 'Lluvia:') !!}
     {!! Form::select('rain', $rain , null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Bulk Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('bulk', 'Bulk:') !!}
+    {!! Form::label('bulk', 'Bultos:') !!}
     {!! Form::number('bulk', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Priority Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('priority', 'Priority:') !!}
+    {!! Form::label('priority', 'Prioridad:') !!}
     {!! Form::select('priority',$priority , null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Observations Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('observations', 'Observations:') !!}
+    {!! Form::label('observations', 'Observaciones:') !!}
     {!! Form::textarea('observations', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -78,7 +78,7 @@
 
 <!-- Status Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('status', 'Status:') !!}
+    {!! Form::label('status', 'Estado:') !!}
     {!! Form::select('status',$status , null, ['class' => 'form-control' ]) !!}
 </div>
 
@@ -90,6 +90,6 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('orders.index') !!}" class="btn btn-default">Cancel</a>
+    {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
+    <a href="{!! route('orders.index') !!}" class="btn btn-default">Cancelar</a>
 </div>

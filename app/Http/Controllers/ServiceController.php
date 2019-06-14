@@ -55,7 +55,7 @@ class ServiceController extends AppBaseController
 
         $service = $this->serviceRepository->create($input);
 
-        Flash::success('Service saved successfully.');
+        Flash::success('Servicio guardado con éxito.');
 
         return redirect(route('services.index'));
     }
@@ -72,7 +72,7 @@ class ServiceController extends AppBaseController
         $service = $this->serviceRepository->findWithoutFail($id);
 
         if (empty($service)) {
-            Flash::error('Service not found');
+            Flash::error('Servicio no encontrado');
 
             return redirect(route('services.index'));
         }
@@ -92,7 +92,7 @@ class ServiceController extends AppBaseController
         $service = $this->serviceRepository->findWithoutFail($id);
 
         if (empty($service)) {
-            Flash::error('Service not found');
+            Flash::error('Servicio no encontrado');
 
             return redirect(route('services.index'));
         }
@@ -113,14 +113,14 @@ class ServiceController extends AppBaseController
         $service = $this->serviceRepository->findWithoutFail($id);
 
         if (empty($service)) {
-            Flash::error('Service not found');
+            Flash::error('Servicio no encontrado');
 
             return redirect(route('services.index'));
         }
 
         $service = $this->serviceRepository->update($request->all(), $id);
 
-        Flash::success('Service updated successfully.');
+        Flash::success('Servicio actualizado con éxito.');
 
         return redirect(route('services.index'));
     }
@@ -137,14 +137,14 @@ class ServiceController extends AppBaseController
         $service = $this->serviceRepository->findWithoutFail($id);
 
         if (empty($service)) {
-            Flash::error('Service not found');
+            Flash::error('Servicio no encontrado');
 
             return redirect(route('services.index'));
         }
 
         $this->serviceRepository->delete($id);
 
-        Flash::success('Service deleted successfully.');
+        Flash::success('Servicio eliminado con éxito.');
 
         return redirect(route('services.index'));
     }
