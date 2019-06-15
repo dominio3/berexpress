@@ -1,12 +1,18 @@
 <li class="{{ Request::is('locations*') ? 'active' : '' }}">
-    <a href="{!! route('locations.index') !!}"><i class="fa fa-edit"></i><span>Mis Ubicaciones</span></a>
+    @if (Auth::user()->role === 'Administrador')
+        <a href="{!! route('locations.index') !!}"><i class="fa fa-edit"></i><span>Ubicaciones</span></a>
+    @elseif (Auth::user()->role === 'Cliente')
+        <!-- VER SOLO UBICACIONES DEL USER CLIENTE DataTables/LocationDataTable -->
+        <a href="{!! route('locations.index') !!}"><i class="fa fa-edit"></i><span>Mis Ubicaciones</span></a>
+    @else
+        <span></span>
+    @endif    
 </li>
 
 <li class="{{ Request::is('services*') ? 'active' : '' }}">
     @if (Auth::user()->role === 'Administrador' || Auth::user()->role === 'Cliente')
         <a href="{!! route('services.index') !!}"><i class="fa fa-edit"></i><span>Servicios y Costos</span></a>
     @else
-        <!-- VER SOLO PEDIDOS DEL USER CADETE -->
         <span></span>
     @endif
 </li>
@@ -14,12 +20,11 @@
 <li class="{{ Request::is('orders*') ? 'active' : '' }}">
     @if (Auth::user()->role === 'Administrador')
         <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Pedidos</span></a>
-    @elseif (Auth::user()->role === 'Cliente')
-        <!-- VER SOLO PEDIDOS DEL USER CLIENTE DataTables/OrderDataTable -->
+    @elseif (Auth::user()->role === 'Cliente' || Auth::user()->role === 'Cadete')
+        <!-- VER SOLO PEDIDOS DEL USER CLIENTE/CADETE DataTables/OrderDataTable -->
         <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Mis Pedidos</span></a>
     @else
-        <!-- VER SOLO PEDIDOS DEL USER CADETE modificar en DataTables/OrderDataTable -->
-        <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Mis Pedidos</span></a>
+        <span></span>
     @endif
 </li>
 

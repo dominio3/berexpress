@@ -11,7 +11,7 @@
             </div>
             <div class="pull-left info">
                 @if (Auth::guest())
-                    <p>Invitado</p>
+                    <p>Invitado*</p>
                 @else
                     <p>{{ Auth::user()->name}} ( {{ Auth::user()->role}} )</p>
                 @endif

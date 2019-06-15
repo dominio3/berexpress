@@ -1,0 +1,5 @@
+use Illuminate\Support\Facades\Auth;
+
+usar camelcase para user, por los models:
+
+$orders = Order::query()->where('users_id','=', Auth::User()->id);

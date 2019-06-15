@@ -5,7 +5,8 @@ namespace App\DataTables;
 use App\Models\Order;
 use Form;
 use Yajra\Datatables\Services\DataTable;
-
+//notas:importo clase para manejar usuarios
+use Illuminate\Support\Facades\Auth;
 use App\Repositories\OrderRepository;
 
 class OrderDataTable extends DataTable
@@ -29,29 +30,21 @@ class OrderDataTable extends DataTable
      */
     public function query()
     {
-        /*
-        @if (Auth::user()->role === 'Administrador')
-            <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Pedidos</span></a>
-        @elseif (Auth::user()->role === 'Cliente')
-            <!-- VER SOLO PEDIDOS DEL USER CLIENTE -->
-            <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Mis Pedidos (falta implementar)</span></a>
-        @else
-            <!-- VER SOLO PEDIDOS DEL USER CADETE -->
-            <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Mis Pedidos (falta implementar)</span></a>
-        @endif
-        */
         $orders = Order::query();
-        //$misorders = Order::query()->where('users_id','=', Auth::User()->id);
-        if (Auth::user()->role === 'Administrador'){
+
+        /*
+        if (Auth::User()->role === 'Administrador'){
             //notas:muestro todas las ordenes para el rol administrador
             return $this->applyScopes($orders);
         }
-
-        if (Auth::user()->role === 'Cliente' || Auth::user()->role === 'Cadete') {
+        */
+        
+        if (Auth::User()->role === 'Cliente') { 
+            // || Auth::User()->role === 'Cadete'
             //notas:muestro solamente en la tabla orders del usuario que inicio sesion
             $orders = Order::query()->where('users_id','=', Auth::User()->id);
-            return $this->applyScopes($orders);
         }
+        return $this->applyScopes($orders);
     }
 
     /**

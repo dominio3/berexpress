@@ -7,6 +7,7 @@ use Form;
 use Yajra\Datatables\Services\DataTable;
 //notas:importo clase para manejar usuarios
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\LocationRepository;
 
 class LocationDataTable extends DataTable
 {
@@ -16,6 +17,7 @@ class LocationDataTable extends DataTable
      */
     public function ajax()
     {
+
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', 'locations.datatables_actions')
@@ -29,8 +31,19 @@ class LocationDataTable extends DataTable
      */
     public function query()
     {
-        //notas:muestro solamente en la tabla locations del usuario que inicio sesion
-        $locations = Location::query()->where('users_id','=', Auth::User()->id);
+        $locations = Location::query();
+
+        /*
+        if (Auth::user()->role === 'Administrador'){
+            //notas:muestro todas las ubicaciones para el rol administrador
+            return $this->applyScopes($orders);
+        }
+        */
+        
+        if (Auth::User()->role === 'Cliente') {
+            //notas:muestro solamente en la tabla locations del usuario que inicio sesion
+            $locations = Location::query()->where('users_id','=', Auth::User()->id);
+        }
         return $this->applyScopes($locations);
     }
 
@@ -83,7 +96,7 @@ class LocationDataTable extends DataTable
             'latitude' => ['name' => 'latitude', 'data' => 'latitude'],
             'longitude' => ['name' => 'longitude', 'data' => 'longitude'],
             'atention_hour' => ['name' => 'atention_hour', 'data' => 'atention_hour'],
-            //'users_id' => ['name' => 'users_id', 'data' => 'users_id']
+            'users_id' => ['name' => 'users_id', 'data' => 'users_id']
         ];
     }
 
