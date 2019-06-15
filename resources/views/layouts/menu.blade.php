@@ -15,11 +15,11 @@
     @if (Auth::user()->role === 'Administrador')
         <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Pedidos</span></a>
     @elseif (Auth::user()->role === 'Cliente')
-        <!-- VER SOLO PEDIDOS DEL USER CLIENTE -->
-        <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Mis Pedidos (falta implementar)</span></a>
+        <!-- VER SOLO PEDIDOS DEL USER CLIENTE DataTables/OrderDataTable -->
+        <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Mis Pedidos</span></a>
     @else
-        <!-- VER SOLO PEDIDOS DEL USER CADETE -->
-        <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Mis Pedidos (falta implementar)</span></a>
+        <!-- VER SOLO PEDIDOS DEL USER CADETE modificar en DataTables/OrderDataTable -->
+        <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Mis Pedidos</span></a>
     @endif
 </li>
 
