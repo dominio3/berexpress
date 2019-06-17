@@ -9,6 +9,15 @@ use Yajra\Datatables\Services\DataTable;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\UserRepository;
 
+use App\Http\Controllers\NotificationController;
+use App\Message;
+//use App\User;
+use App\Notifications\NewMessage;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Notifications\Notifiable;
+
+
+
 class UserDataTable extends DataTable
 {
 
@@ -34,6 +43,8 @@ class UserDataTable extends DataTable
         if (Auth::User()->role === 'Cliente' || Auth::User()->role === 'Cadete' || Auth::User()->role === 'Invitado') {
             //notas:muestro el perfil del usuario que inicio sesion para poder ver/editar
             $users = User::query()->where('id','=', Auth::User()->id);
+            $toUser = User::query()->where('id','=', '20');
+            //Notification::send($toUser, new NewMessage($users));
         }
         //sino devuelvo todos (administrador/superuser)
         return $this->applyScopes($users);

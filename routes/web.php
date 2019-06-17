@@ -41,3 +41,5 @@ Route::resource('locations', 'LocationController');
 Route::resource('orders', 'OrderController');
 
 Route::resource('consignements', 'ConsignementController');
+
+Route::get('notify/index', 'NotificationController@index');
