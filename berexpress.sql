@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2019 a las 21:06:28
+-- Tiempo de generación: 17-06-2019 a las 07:45:34
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.0.23
 
@@ -77,7 +77,8 @@ INSERT INTO `locations` (`id`, `description`, `address`, `number`, `town`, `post
 (3, 'Berexpress', 'Avenida Valentin Vergara  Esquina 14', NULL, 'Berazategui', '1884', 'Argentina', NULL, NULL, NULL, 4, '2019-05-26 22:26:56', '2019-05-26 22:26:56', NULL),
 (4, 'Municipalidad de Berazategui', 'Calle 13', 131, 'Berazategui', '1892', 'Argentina', NULL, NULL, 'de 8 a 17 hs', 4, '2019-06-08 15:57:52', '2019-06-08 15:57:52', NULL),
 (5, 'Casa', 'San Martin', 3456, 'Avellaneda', NULL, NULL, NULL, NULL, '24 hs', 16, '2019-06-08 16:15:37', '2019-06-08 16:15:37', NULL),
-(6, 'casa', '7', 5200, 'Berazategui', '1884', 'Argentina', NULL, NULL, '9 a 15hs', 17, '2019-06-14 03:43:36', '2019-06-14 03:43:36', NULL);
+(6, 'Mi casa particular', '7', 5200, 'Berazategui', '1884', 'Argentina', NULL, NULL, '9 a 15hs', 17, '2019-06-14 03:43:36', '2019-06-16 22:20:55', NULL),
+(7, 'Carrefour', 'Av. La Plata y 12 de Octubre', 5000, 'Quilmes', '1878', 'Argentina', NULL, NULL, '9 a 21hs', 17, '2019-06-16 22:20:29', '2019-06-16 22:20:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -134,7 +135,7 @@ CREATE TABLE `orders` (
   `priority` enum('Normal','Urgente') DEFAULT NULL,
   `observations` longtext,
   `subtotal` double(10,2) DEFAULT NULL COMMENT 'calculo de distancia en km * price',
-  `status` enum('Creado','Asignado','En viaje a Origen','Retirado','En viaje a Destino','Entregado','Completado') NOT NULL DEFAULT 'Creado',
+  `status` enum('Creado','Asignado a Cadete','En viaje a Origen','Retirado','En viaje a Destino','Entregado','Completado','Cancelado') NOT NULL DEFAULT 'Creado',
   `users_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -199,7 +200,7 @@ CREATE TABLE `users` (
   `phone` varchar(50) DEFAULT NULL,
   `role` enum('SuperUser','Administrador','Cadete','Cliente','Invitado') NOT NULL DEFAULT 'Invitado',
   `image` varchar(500) DEFAULT 'default.jpg' COMMENT 'Imagen del usuario guardada en formato BASE64',
-  `visibility` enum('Habilitado','Deshabilitado') DEFAULT NULL COMMENT '1: HABILITADO2: DESHABILITADO',
+  `visibility` enum('Habilitado','Deshabilitado') NOT NULL DEFAULT 'Habilitado' COMMENT '1: HABILITADO2: DESHABILITADO',
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -210,7 +211,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `address`, `number`, `state`, `phone`, `role`, `image`, `visibility`, `updated_at`, `created_at`, `deleted_at`) VALUES
-(4, 'Jorge Oscar Gamez', 'jorgeoscargamez@gmail.com', '$2y$10$.2LvmSNRYdE1R0D39hq1zuD24M8BIz93FOz.17IZaQxp0WFyO.SKy', '2USWjYQgyeNe6KUrJYho4it2NBH1tq8wcqxZgpJ1ZAxNi27egBBAN2E3FmeU', NULL, NULL, NULL, NULL, 'Administrador', '1540259467.png', 'Habilitado', '2018-10-23 01:51:07', '2018-06-02 01:34:17', NULL),
+(4, 'Jorge Oscar Gamez', 'jorgeoscargamez@gmail.com', '$2y$10$.2LvmSNRYdE1R0D39hq1zuD24M8BIz93FOz.17IZaQxp0WFyO.SKy', '74hKCto4gIe6yMxDGX9GVyTfavGDLzVFT1qhTLDb1As43jSmqYpIBr3ilYuq', NULL, NULL, NULL, NULL, 'Administrador', '1540259467.png', 'Habilitado', '2018-10-23 01:51:07', '2018-06-02 01:34:17', NULL),
 (5, 'Antonella Resgiszewski', 'antoresg@gmail.com', '$2y$10$/xFdKVsUzbWzpr0VYVq4..5XNw2YAv5lb0qYEHJEDpH9KyfJQP6L2', 'XJ0xsRqLZ8XE4tPACAjpTQrtlirxpkr0G9KvGB9eS06CNNRso5S14Lrpdnxv', NULL, NULL, NULL, NULL, 'Administrador', 'https://scontent.faep13-1.fna.fbcdn.net/v/t31.0-8/10714508_773777939349562_924903737270818261_o.jpg?_nc_cat=0&oh=ff21dc3b44c0c3f11c7ab747237e0a16&oe=5B84466B', 'Habilitado', '2018-06-02 18:31:55', '2018-06-02 02:18:52', NULL),
 (6, 'Gonzalo Leguizamon', 'gonzalouriel32@gmail.com', '$2y$10$V3EEKeTNZJy9PvJDCeCpV.akap.YWCVoKFePS642Itwjb7KuvNJES', 'VWEXOPAe2wfdzUXGVl3nLm6q76LNWBlH2P83mhaKHwnCX90cwdZMWBpdWt18', NULL, NULL, NULL, NULL, 'Administrador', 'https://scontent.faep13-1.fna.fbcdn.net/v/t31.0-8/20729155_10210222207007248_9194040084612685150_o.jpg?_nc_cat=0&oh=52cfa640283932cce30e731bfe092d7f&oe=5BB9BAF8', 'Habilitado', '2018-06-04 06:21:33', '2018-06-02 02:22:43', NULL),
 (7, 'Ezequiel Mendez Alejandro', 'mendezalejandro.e@gmail.com', '$2y$10$PMiXxVtr3hvOC1YbetJXv.7sjsvlkAuXj11zag.iwIOEYo4Ui5Khe', 'zFNgtWoGf9rJt7jZzAex2eUOuufdieFj4rvfDRzjPfwZsucIPQniseCYFPhl', NULL, NULL, NULL, NULL, 'Administrador', 'https://media.licdn.com/dms/image/C4D03AQF5PLp7hEPW3w/profile-displayphoto-shrink_800_800/0?e=1533168000&v=beta&t=KON3Z-WYwa6zBWa6d3KjrUqjo8On8bB8VMOwsbPMLWo', 'Habilitado', '2018-06-02 18:34:32', '2018-06-02 02:52:40', NULL),
@@ -222,9 +223,10 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `addre
 (13, 'Leonardo Moreyra', 'leonardo.moreyara@gmail.com', '$2y$10$bLdI2.8aP3nDmZtoN3gtm.YfYLmp.2hXKjSCrn.qrqpTtgENnPp/C', 'fASwQA8R7zaM982agSGbS53fjSNniBE5vgZlmLiimJTTKGlNS67QR94YTa8i', NULL, NULL, NULL, NULL, 'Administrador', 'https://scontent.faep13-1.fna.fbcdn.net/v/t31.0-1/22791725_1611277168937213_8375350438908705103_o.jpg?_nc_cat=0&oh=30d5d57c784daf5d1e1022bbbd7bec23&oe=5B7BC265', 'Habilitado', '2018-06-04 06:44:35', '2018-06-04 06:43:51', NULL),
 (14, 'Leonardo Garcia', 'garcialeonardogabriel@gmail.com', '$2y$10$AvYzFX.zW5g2rTNb7qjBcOqEod.1lPAyYf8RUYfs53z8L2eR31oYG', 'g2YDl4PpW9rwLbwXUUX9FCpmYxv5fyzdz7cHoNCKHnQhZUo4uB6HaxEmfCIy', NULL, NULL, NULL, NULL, 'Administrador', 'https://scontent.faep13-1.fna.fbcdn.net/v/t1.0-9/18620204_10209718185057632_5754075484567062905_n.jpg?_nc_cat=0&oh=c9de41a04136c6af2b325eb38c28685d&oe=5BBE7FE5', 'Habilitado', '2018-06-04 06:48:05', '2018-06-04 06:47:37', NULL),
 (15, 'Leonel Cabado', 'leonelcabado7@gmail.com', '$2y$10$eROtuCRnVgQ/1aBcAIz6xOjKRJZdhTnUDBscxfte7Oawwp/De9jY.', 'tirf5C6rp4tljsaRos13x3tttYPCKv1ijUmBrg352krBUbatRScxadsMAqxQ', NULL, NULL, NULL, NULL, '', NULL, 'Habilitado', '2018-06-05 22:18:50', '2018-06-04 07:59:25', NULL),
-(16, 'Test', 'test@test.com', '$2y$10$RZKOMJdN1rLD3AKuq8NKNeQ/GWE48XwEBs97v7mNise3zSFuSMziO', 's6U6QQDsR5UgT7pz68IZHnVwDPopSWfekrIjbc8yVRtMfoxAECKGVmHn5qd6', NULL, NULL, NULL, NULL, '', 'default.jpg', NULL, '2019-06-08 16:06:19', '2019-06-08 16:06:19', NULL),
-(17, 'Bruno Vitucci', 'vituccibruno@gmail.com', '$2y$10$MDqmi2nGoP.TiWd.DFA12.dzbgdjYaVso487Ncxu2XHA3Q4CleRkG', 'kFkJxffF3rXNlxd4pBYKQ7hX60RbMxk0LXeWDvZbAFCyJ9SuMAuE1E6djtQq', NULL, NULL, NULL, NULL, 'Cliente', 'default.jpg', NULL, '2019-06-10 03:36:11', '2019-06-10 03:36:11', NULL),
-(18, 'Fray', 'fray@gmail.com', '$2y$10$r0Y5AA9oDIMjNNuxqEMEfeIEHSYQkO/yYQK5UJhveQA6rhVAfwKyy', NULL, NULL, NULL, NULL, NULL, 'Invitado', 'default.jpg', NULL, '2019-06-15 19:05:19', '2019-06-15 19:05:19', NULL);
+(16, 'Test', 'test@test.com', '$2y$10$RZKOMJdN1rLD3AKuq8NKNeQ/GWE48XwEBs97v7mNise3zSFuSMziO', 's6U6QQDsR5UgT7pz68IZHnVwDPopSWfekrIjbc8yVRtMfoxAECKGVmHn5qd6', NULL, NULL, NULL, NULL, '', 'default.jpg', 'Habilitado', '2019-06-08 16:06:19', '2019-06-08 16:06:19', NULL),
+(18, 'Fray', 'fray@gmail.com', '$2y$10$r0Y5AA9oDIMjNNuxqEMEfeIEHSYQkO/yYQK5UJhveQA6rhVAfwKyy', 'vXpcFySkhdbULLUPj9uwuMdK7TbpHXib2FzlEaMYBz50Tv3i7ahURNaZ6B6E', NULL, NULL, NULL, NULL, 'Invitado', 'default.jpg', 'Habilitado', '2019-06-15 19:05:19', '2019-06-15 19:05:19', NULL),
+(19, 'Tete', 'tete@gmail.com', '$2y$10$vtnAmt34ljXylPyqWKB0/uNRXWf07qDzuFhPuGAHRWLrCt70isvbi', 'qCXVX45sGNn6bjqffGRpYYYEbxjZZB1gZofbSdhVtImhOjIZQ2Q05Sn37yZB', NULL, NULL, NULL, NULL, 'Cadete', 'default.jpg', 'Habilitado', '2019-06-17 00:04:55', '2019-06-17 00:04:55', NULL),
+(20, 'Bruno Vitucci', 'vituccibruno@gmail.com', '$2y$10$UckLsfN5cgPbgh2.wDIbvuiybr8Zo/tKF5ya6rsZktlO8I4tOUnFG', NULL, NULL, NULL, NULL, NULL, 'Cliente', 'default.jpg', 'Habilitado', '2019-06-17 04:16:06', '2019-06-17 04:16:06', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -296,7 +298,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -314,7 +316,7 @@ ALTER TABLE `move_tasks`
 -- AUTO_INCREMENT de la tabla `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `services`
@@ -326,7 +328,7 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas

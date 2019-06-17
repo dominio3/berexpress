@@ -75,6 +75,7 @@ class UserController extends AppBaseController
         $user = $this->userRepository->findWithoutFail($id);
         $roles = ([ 'SuperUser' => 'SuperUser' , 'Administrativo' => 'Administrativo',
         'Cadete' => 'Cadete' , 'Cliente' => 'Cliente' , 'Invitado' => 'Invitado']);
+        $visibility = ([ 'Habilitado' => 'Habilitado' , 'Deshabilitado' => 'Deshabilitado']);
 
         if (empty($user)) {
             Flash::error('Usuario no encontrado');
@@ -94,7 +95,9 @@ class UserController extends AppBaseController
      */
     public function edit($id)
     {
-      $roles = ([ 'SuperUser' => 'SuperUser' , 'Administrativo' => 'Administrativo', 'Cadete' => 'Cadete' , 'Cliente' => 'Cliente' , 'Invitado' => 'Invitado']);
+        $roles = ([ 'SuperUser' => 'SuperUser' , 'Administrativo' => 'Administrativo', 
+        'Cadete' => 'Cadete' , 'Cliente' => 'Cliente' , 'Invitado' => 'Invitado']);
+        $visibility = ([ 'Habilitado' => 'Habilitado' , 'Deshabilitado' => 'Deshabilitado']);
         $user = $this->userRepository->findWithoutFail($id);
 
         if (empty($user)) {

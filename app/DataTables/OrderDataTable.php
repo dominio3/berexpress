@@ -54,7 +54,32 @@ class OrderDataTable extends DataTable
      */
     public function html()
     {
-        return $this->builder()
+        if (Auth::User()->role === 'Administrador' || Auth::User()->role === 'SuperUser') {
+            return $this->builder()
+                ->columns($this->getColumns())
+                ->addAction(['width' => '120px'])
+                ->ajax('')
+                ->parameters([
+                    'dom' => 'Bfrtip',
+                    'scrollX' => true,
+                    'buttons' => [
+                        'print',
+                        'reset',
+                        'reload',
+                        [
+                            'extend'  => 'collection',
+                            'text'    => '<i class="fa fa-download"></i> Export',
+                            'buttons' => [
+                                'csv',
+                                'excel',
+                                'pdf',
+                            ],
+                        ],
+                        'colvis'
+                    ]
+                ]);
+        } else {
+            return $this->builder()
             ->columns($this->getColumns())
             ->addAction(['width' => '120px'])
             ->ajax('')
@@ -62,21 +87,11 @@ class OrderDataTable extends DataTable
                 'dom' => 'Bfrtip',
                 'scrollX' => true,
                 'buttons' => [
-                    'print',
-                    'reset',
                     'reload',
-                    [
-                         'extend'  => 'collection',
-                         'text'    => '<i class="fa fa-download"></i> Export',
-                         'buttons' => [
-                             'csv',
-                             'excel',
-                             'pdf',
-                         ],
-                    ],
                     'colvis'
                 ]
             ]);
+        }
     }
 
     /**
@@ -86,23 +101,45 @@ class OrderDataTable extends DataTable
      */
     private function getColumns()
     {
-        return [
-            'date' => ['name' => 'date', 'data' => 'date'],
-            'services_id' => ['name' => 'services_id', 'data' => 'services_id'],
-            'origin' => ['name' => 'origin', 'data' => 'origin'],
-            'destination' => ['name' => 'destination', 'data' => 'destination'],
-            'distance' => ['name' => 'distance', 'data' => 'distance'],
-            'contact_name' => ['name' => 'contact_name', 'data' => 'contact_name'],
-            'contact_phone' => ['name' => 'contact_phone', 'data' => 'contact_phone'],
-            'takes' => ['name' => 'takes', 'data' => 'takes'],
-            'rain' => ['name' => 'rain', 'data' => 'rain'],
-            'bulk' => ['name' => 'bulk', 'data' => 'bulk'],
-            'priority' => ['name' => 'priority', 'data' => 'priority'],
-            'observations' => ['name' => 'observations', 'data' => 'observations'],
-            'subtotal' => ['name' => 'subtotal', 'data' => 'subtotal'],
-            'status' => ['name' => 'status', 'data' => 'status'],
-            'users_id' => ['name' => 'users_id', 'data' => 'users_id']
-        ];
+        if (Auth::User()->role === 'Cliente' || Auth::User()->role === 'Cadete' || Auth::User()->role === 'Invitado') {
+            return [
+                'date' => ['name' => 'date', 'data' => 'date'],
+                'services_id' => ['name' => 'services_id', 'data' => 'services_id'],
+                'origin' => ['name' => 'origin', 'data' => 'origin'],
+                'destination' => ['name' => 'destination', 'data' => 'destination'],
+                'distance' => ['name' => 'distance', 'data' => 'distance'],
+                'contact_name' => ['name' => 'contact_name', 'data' => 'contact_name'],
+                'contact_phone' => ['name' => 'contact_phone', 'data' => 'contact_phone'],
+                //'takes' => ['name' => 'takes', 'data' => 'takes'],
+                'rain' => ['name' => 'rain', 'data' => 'rain'],
+                'bulk' => ['name' => 'bulk', 'data' => 'bulk'],
+                'priority' => ['name' => 'priority', 'data' => 'priority'],
+                'observations' => ['name' => 'observations', 'data' => 'observations'],
+                'subtotal' => ['name' => 'subtotal', 'data' => 'subtotal'],
+                'status' => ['name' => 'status', 'data' => 'status']
+                //'users_id' => ['name' => 'users_id', 'data' => 'users_id']
+            ];
+        }
+        else {
+            return [
+                'date' => ['name' => 'date', 'data' => 'date'],
+                'services_id' => ['name' => 'services_id', 'data' => 'services_id'],
+                'origin' => ['name' => 'origin', 'data' => 'origin'],
+                'destination' => ['name' => 'destination', 'data' => 'destination'],
+                'distance' => ['name' => 'distance', 'data' => 'distance'],
+                'contact_name' => ['name' => 'contact_name', 'data' => 'contact_name'],
+                'contact_phone' => ['name' => 'contact_phone', 'data' => 'contact_phone'],
+                //'takes' => ['name' => 'takes', 'data' => 'takes'],
+                'rain' => ['name' => 'rain', 'data' => 'rain'],
+                'bulk' => ['name' => 'bulk', 'data' => 'bulk'],
+                'priority' => ['name' => 'priority', 'data' => 'priority'],
+                'observations' => ['name' => 'observations', 'data' => 'observations'],
+                'subtotal' => ['name' => 'subtotal', 'data' => 'subtotal'],
+                'status' => ['name' => 'status', 'data' => 'status'],
+                'users_id' => ['name' => 'users_id', 'data' => 'users_id']
+                //FALTARIA QUE SE VEA EL NOMBRE DEL USER CLIENTE
+            ];
+        }
     }
 
     /**

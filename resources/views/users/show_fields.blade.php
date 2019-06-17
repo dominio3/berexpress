@@ -1,11 +1,13 @@
 <!-- BODY
     http://localhost/berexpress/public/users/:id -->
 
-<!-- Id Field -->
-<div class="form-group">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{!! $user->id !!}</p>
-</div>
+@if (Auth::user()->role === 'Administrador')
+    <!-- Id Field -->
+    <div class="form-group">
+        {!! Form::label('id', 'Id:') !!}
+        <p>{!! $user->id !!}</p>
+    </div>
+@endif
 
 <!-- Name Field -->
 <div class="form-group">
@@ -19,11 +21,12 @@
     <p>{!! $user->email !!}</p>
 </div>
 
-<!-- Password Field -->
+<!-- Password Field 
 <div class="form-group">
     {!! Form::label('password', 'Contraseña:') !!}
     <p>{!! $user->password !!}</p>
 </div>
+-->
 
 <!-- Remember Token Field 
 <div class="form-group">
@@ -44,11 +47,12 @@
     <p>{!! $user->number !!}</p>
 </div>
 
-<!-- State Field -->
+<!-- State Field 
 <div class="form-group">
     {!! Form::label('state', 'Localidad:') !!}
     <p>{!! $user->state !!}</p>
 </div>
+-->
 
 <!-- Phone Field -->
 <div class="form-group">
@@ -68,27 +72,30 @@
     <p>{!! $user->image !!}</p>
 </div>
 
-<!-- Visibility Field -->
-<div class="form-group">
-    {!! Form::label('visibility', 'Visibilidad:') !!}
-    <p>{!! $user->visibility !!}</p>
-</div>
+@if (Auth::user()->role === 'Administrador')
+    <!-- Visibility Field -->
+    <div class="form-group">
+        {!! Form::label('visibility', 'Visibilidad:') !!}
+        <p>{!! $user->visibility !!}</p>
+    </div>
 
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Actualizado:') !!}
-    <p>{!! $user->updated_at !!}</p>
-</div>
+    <!-- Updated At Field -->
+    <div class="form-group">
+        {!! Form::label('updated_at', 'Actualizado:') !!}
+        <p>{!! $user->updated_at !!}</p>
+    </div>
 
-<!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Creado:') !!}
-    <p>{!! $user->created_at !!}</p>
-</div>
+    <!-- Created At Field -->
+    <div class="form-group">
+        {!! Form::label('created_at', 'Creado:') !!}
+        <p>{!! $user->created_at !!}</p>
+    </div>
 
-<!-- Deleted At Field -->
-<div class="form-group">
-    {!! Form::label('deleted_at', 'Eliminado:') !!}
-    <p>{!! $user->deleted_at !!}</p>
-</div>
+    <!-- Deleted At Field -->
+
+    <div class="form-group">
+        {!! Form::label('deleted_at', 'Eliminado:') !!}
+        <p>{!! $user->deleted_at !!}</p>
+    </div>
+@endif
 

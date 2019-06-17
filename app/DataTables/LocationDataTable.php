@@ -54,7 +54,32 @@ class LocationDataTable extends DataTable
      */
     public function html()
     {
-        return $this->builder()
+        if (Auth::User()->role === 'Administrador' || Auth::User()->role === 'SuperUser') {
+            return $this->builder()
+                ->columns($this->getColumns())
+                ->addAction(['width' => '120px'])
+                ->ajax('')
+                ->parameters([
+                    'dom' => 'Bfrtip',
+                    'scrollX' => true,
+                    'buttons' => [
+                        'print',
+                        'reset',
+                        'reload',
+                        [
+                            'extend'  => 'collection',
+                            'text'    => '<i class="fa fa-download"></i> Export',
+                            'buttons' => [
+                                'csv',
+                                'excel',
+                                'pdf',
+                            ],
+                        ],
+                        'colvis'
+                    ]
+                ]);
+        } else {
+            return $this->builder()
             ->columns($this->getColumns())
             ->addAction(['width' => '120px'])
             ->ajax('')
@@ -62,21 +87,11 @@ class LocationDataTable extends DataTable
                 'dom' => 'Bfrtip',
                 'scrollX' => true,
                 'buttons' => [
-                    'print',
-                    'reset',
                     'reload',
-                    [
-                         'extend'  => 'collection',
-                         'text'    => '<i class="fa fa-download"></i> Export',
-                         'buttons' => [
-                             'csv',
-                             'excel',
-                             'pdf',
-                         ],
-                    ],
                     'colvis'
                 ]
             ]);
+        }
     }
 
     /**

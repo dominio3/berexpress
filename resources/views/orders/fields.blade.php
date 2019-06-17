@@ -28,7 +28,7 @@
 
     <!-- Distance Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('distance', 'Distanciaaaa:') !!}
+        {!! Form::label('distance', 'Distancia:') !!}
         {!! Form::number('distance', null, ['class' => 'form-control', 'disabled']) !!}
     </div>
 
@@ -83,11 +83,7 @@
     <!-- Status Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('status', 'Estado:') !!}
-        @if (Auth::user()->role === 'Cliente')
-            {!! Form::select('status',$status , null, ['class' => 'form-control', 'disabled']) !!}             
-        @else
-            {!! Form::select('status',$status , null, ['class' => 'form-control' ]) !!}
-        @endif
+        {!! Form::select('status',$status , null, ['class' => 'form-control' ]) !!}
     </div>
 
     <!-- Users Id Field -->
@@ -245,11 +241,12 @@
         {!! Form::text('contact_phone', null, ['class' => 'form-control', 'disabled']) !!}
     </div>
 
-    <!-- Takes Field -->
+    <!-- Takes Field 
     <div class="form-group col-sm-6">
         {!! Form::label('takes', 'Takes:') !!}
         {!! Form::text('takes', null, ['class' => 'form-control', 'disabled']) !!}
     </div>
+    -->
 
     <!-- Rain Field -->
     <div class="form-group col-sm-6">
@@ -285,7 +282,7 @@
     <div class="form-group col-sm-6">
         {!! Form::label('status', 'Estado:') !!}
         <!-- CADETE solo debe poder seleccionar algunos estados -->           
-        {!! Form::select('status',['En viaje a Origen','Retirado','En viaje a Destino','Entregado'], null, ['class' => 'form-control' ]) !!}
+        {!! Form::select('status', ['En viaje a Origen','Retirado','En viaje a Destino','Entregado'], null, ['class' => 'form-control' ]) !!}
     </div>
 @else
         

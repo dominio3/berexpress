@@ -5,6 +5,9 @@ namespace App\DataTables;
 use App\Models\User;
 use Form;
 use Yajra\Datatables\Services\DataTable;
+//notas:importo clase para manejar usuarios
+use Illuminate\Support\Facades\Auth;
+use App\Repositories\UserRepository;
 
 class UserDataTable extends DataTable
 {
@@ -28,7 +31,11 @@ class UserDataTable extends DataTable
     public function query()
     {
         $users = User::query();
-
+        if (Auth::User()->role === 'Cliente' || Auth::User()->role === 'Cadete' || Auth::User()->role === 'Invitado') {
+            //notas:muestro el perfil del usuario que inicio sesion para poder ver/editar
+            $users = User::query()->where('id','=', Auth::User()->id);
+        }
+        //sino devuelvo todos (administrador/superuser)
         return $this->applyScopes($users);
     }
 
@@ -39,7 +46,32 @@ class UserDataTable extends DataTable
      */
     public function html()
     {
-        return $this->builder()
+        if (Auth::User()->role === 'Administrador' || Auth::User()->role === 'SuperUser') {
+            return $this->builder()
+                ->columns($this->getColumns())
+                ->addAction(['width' => '120px'])
+                ->ajax('')
+                ->parameters([
+                    'dom' => 'Bfrtip',
+                    'scrollX' => true,
+                    'buttons' => [
+                        'print',
+                        'reset',
+                        'reload',
+                        [
+                            'extend'  => 'collection',
+                            'text'    => '<i class="fa fa-download"></i> Export',
+                            'buttons' => [
+                                'csv',
+                                'excel',
+                                'pdf',
+                            ],
+                        ],
+                        'colvis'
+                    ]
+                ]);
+        } else {
+            return $this->builder()
             ->columns($this->getColumns())
             ->addAction(['width' => '120px'])
             ->ajax('')
@@ -48,20 +80,10 @@ class UserDataTable extends DataTable
                 'scrollX' => true,
                 'buttons' => [
                     'print',
-                    'reset',
                     'reload',
-                    [
-                         'extend'  => 'collection',
-                         'text'    => '<i class="fa fa-download"></i> Export',
-                         'buttons' => [
-                             'csv',
-                             'excel',
-                             'pdf',
-                         ],
-                    ],
-                    'colvis'
                 ]
             ]);
+        }
     }
 
     /**
@@ -71,19 +93,37 @@ class UserDataTable extends DataTable
      */
     private function getColumns()
     {
-        return [
-            'name' => ['name' => 'name', 'data' => 'name'],
-            'email' => ['name' => 'email', 'data' => 'email'],
-            'password' => ['name' => 'password', 'data' => 'password'],
-            'remember_token' => ['name' => 'remember_token', 'data' => 'remember_token'],
-            'address' => ['name' => 'address', 'data' => 'address'],
-            'number' => ['name' => 'number', 'data' => 'number'],
-            'state' => ['name' => 'state', 'data' => 'state'],
-            'phone' => ['name' => 'phone', 'data' => 'phone'],
-            'role' => ['name' => 'role', 'data' => 'role'],
-            'image' => ['name' => 'image', 'data' => 'image'],
-            'visibility' => ['name' => 'visibility', 'data' => 'visibility']
-        ];
+        if (Auth::User()->role === 'Cliente' || Auth::User()->role === 'Cadete' || Auth::User()->role === 'Invitado') {
+            return [
+                'name' => ['name' => 'name', 'data' => 'name'],
+                'email' => ['name' => 'email', 'data' => 'email'],
+                // 'password' => ['name' => 'password', 'data' => 'password'],
+                // 'remember_token' => ['name' => 'remember_token', 'data' => 'remember_token'],
+                'address' => ['name' => 'address', 'data' => 'address'],
+                'number' => ['name' => 'number', 'data' => 'number'],
+                //'state' => ['name' => 'state', 'data' => 'state'],
+                'phone' => ['name' => 'phone', 'data' => 'phone'],
+                'role' => ['name' => 'role', 'data' => 'role'],
+                'image' => ['name' => 'image', 'data' => 'image']
+                //'visibility' => ['name' => 'visibility', 'data' => 'visibility']
+            ];
+        }
+
+        else {
+            return [
+                'name' => ['name' => 'name', 'data' => 'name'],
+                'email' => ['name' => 'email', 'data' => 'email'],
+                'password' => ['name' => 'password', 'data' => 'password'],
+                'remember_token' => ['name' => 'remember_token', 'data' => 'remember_token'],
+                'address' => ['name' => 'address', 'data' => 'address'],
+                'number' => ['name' => 'number', 'data' => 'number'],
+                //'state' => ['name' => 'state', 'data' => 'state'],
+                'phone' => ['name' => 'phone', 'data' => 'phone'],
+                'role' => ['name' => 'role', 'data' => 'role'],
+                'image' => ['name' => 'image', 'data' => 'image'],
+                'visibility' => ['name' => 'visibility', 'data' => 'visibility']
+            ];
+        }
     }
 
     /**
