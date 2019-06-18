@@ -83,8 +83,10 @@ class OrderController extends AppBaseController
     public function show($id)
     {
         $services = \App\Models\Service::pluck('description' , 'id');
-        $origin = \App\Models\Location::where('users_id','=',Auth::user()->id)->pluck('description' , 'id');
-        $destination = \App\Models\Location::where('users_id','=',Auth::user()->id)->pluck('description' , 'id');
+        $origin = \App\Models\Location::where('users_id', '=', Auth::user()->id)->pluck('description' , 'id');
+        $originLocation = \App\Models\Location::pluck('description' , 'id');
+        $destination = \App\Models\Location::where('users_id', '=', Auth::user()->id)->pluck('description' , 'id');
+        $destinationLocation = \App\Models\Location::pluck('description' , 'id');
         $priority = (['Normal'=>'Normal', 'Urgente'=>'Urgente']);
         $status = (['Creado'=> 'Creado','Asignado' => 'Asignado','En viaje a Origen' => 'En viaje a Origen',
         'Retirado'=>'Retirado','En viaje a Destino'=>'En viaje a Destino',

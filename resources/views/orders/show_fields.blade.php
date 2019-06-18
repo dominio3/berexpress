@@ -18,13 +18,13 @@
 
 <!-- Origin Field -->
 <div class="form-group">
-    {!! Form::label('origin', 'Origen:') !!}
+    {!! Form::label('origin', 'Id Origen:') !!}
     <p>{!! $order->origin !!}</p>
 </div>
 
 <!-- Destination Field -->
 <div class="form-group">
-    {!! Form::label('destination', 'Destino:') !!}
+    {!! Form::label('destination', 'Id Destino:') !!}
     <p>{!! $order->destination !!}</p>
 </div>
 

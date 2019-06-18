@@ -10,20 +10,20 @@
 
     <!-- Services Id Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('services_id', 'ID Servicio:') !!}
+        {!! Form::label('services_id', 'Servicio:') !!}
         {!! Form::select('services_id', $services ,  null, ['class' => 'form-control']) !!}
     </div>
 
     <!-- Origin Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('origin', 'Origen:') !!}
-        {!! Form::select('origin', $origin , null, ['class' => 'form-control']) !!}
+        {!! Form::select('origin', $origin , null, ['class' => 'form-control', 'require']) !!}
     </div>
 
     <!-- Destination Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('destination', 'Destino:') !!}
-        {!! Form::select('destination', $destination , null, ['class' => 'form-control']) !!}
+        {!! Form::select('destination', $destination , null, ['class' => 'form-control', 'require']) !!}
     </div>
 
     <!-- Distance Field -->
@@ -44,11 +44,12 @@
         {!! Form::text('contact_phone', null, ['class' => 'form-control']) !!}
     </div>
 
-    <!-- Takes Field -->
+    <!-- Takes Field 
     <div class="form-group col-sm-6">
         {!! Form::label('takes', 'Takes:') !!}
         {!! Form::text('takes', null, ['class' => 'form-control']) !!}
     </div>
+    -->
 
     <!-- Rain Field -->
     <div class="form-group col-sm-6">
@@ -88,12 +89,14 @@
 
     <!-- Users Id Field -->
     <div class="form-group col-sm-6">
+    {!! Form::label('users_id', 'ID Usuario:') !!}
         {!! Form::number('users_id', Auth::user()->id , ['class' => 'form-control']) !!}
     </div>
 
     <!-- Users Name Field -->
         <div class="form-group col-sm-6">
-        {!! Form::number('users_id', Auth::user()->name , ['class' => 'form-control']) !!}
+        {!! Form::label('name', 'Nombre Usuario:') !!}
+        {!! Form::text('users_id', Auth::user()->name , ['class' => 'form-control']) !!}
     </div>
 
     <!-- Submit Field -->
@@ -111,20 +114,20 @@
 
     <!-- Services Id Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('services_id', 'ID Servicio:') !!}
+        {!! Form::label('services_id', 'Servicio:') !!}
         {!! Form::select('services_id', $services ,  null, ['class' => 'form-control']) !!}
     </div>
 
     <!-- Origin Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('origin', 'Origen:') !!}
-        {!! Form::select('origin', $origin , null, ['class' => 'form-control']) !!}
+        {!! Form::select('origin', $origin , null, ['class' => 'form-control', 'require']) !!}
     </div>
 
     <!-- Destination Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('destination', 'Destino:') !!}
-        {!! Form::select('destination', $destination , null, ['class' => 'form-control']) !!}
+        {!! Form::select('destination', $destination , null, ['class' => 'form-control', 'require']) !!}
     </div>
 
     <!-- Distance Field -->
@@ -145,11 +148,12 @@
         {!! Form::text('contact_phone', null, ['class' => 'form-control']) !!}
     </div>
 
-    <!-- Takes Field -->
+    <!-- Takes Field 
     <div class="form-group col-sm-6">
         {!! Form::label('takes', 'Takes:') !!}
         {!! Form::text('takes', null, ['class' => 'form-control']) !!}
     </div>
+    -->
 
     <!-- Rain Field -->
     <div class="form-group col-sm-6">
@@ -214,13 +218,13 @@
     <!-- Origin Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('origin', 'Origen:') !!}
-        {!! Form::select('origin', $origin , null, ['class' => 'form-control', 'disabled']) !!}
+        {!! Form::select('origin', $origin , null, ['class' => 'form-control', 'require']) !!}
     </div>
 
     <!-- Destination Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('destination', 'Destino:') !!}
-        {!! Form::select('destination', $destination , null, ['class' => 'form-control', 'disabled']) !!}
+        {!! Form::select('destination', $destination , null, ['class' => 'form-control', 'require']) !!}
     </div>
 
     <!-- Distance Field -->
