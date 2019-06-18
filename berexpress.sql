@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2019 a las 07:45:34
+-- Tiempo de generación: 18-06-2019 a las 02:21:15
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.0.23
 
@@ -83,21 +83,26 @@ INSERT INTO `locations` (`id`, `description`, `address`, `number`, `town`, `post
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `migrations`
+-- Estructura de tabla para la tabla `messages`
 --
 
-CREATE TABLE `migrations` (
+CREATE TABLE `messages` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `from` int(10) UNSIGNED NOT NULL,
+  `to` int(10) UNSIGNED NOT NULL,
+  `message` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `migrations`
+-- Volcado de datos para la tabla `messages`
 --
 
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2019_05_26_134739_berexpress', 1);
+INSERT INTO `messages` (`id`, `from`, `to`, `message`, `created_at`, `updated_at`) VALUES
+(1, 2, 1, 'Demo message from user 2 to user 1.', '2019-06-17 16:28:09', '2019-06-17 16:28:09'),
+(2, 2, 1, 'Demo message from user 2 to user 1.', '2019-06-17 17:44:05', '2019-06-17 17:44:05'),
+(3, 2, 1, 'Demo message from user 2 to user 1.', '2019-06-17 18:23:35', '2019-06-17 18:23:35');
 
 -- --------------------------------------------------------
 
@@ -211,7 +216,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `address`, `number`, `state`, `phone`, `role`, `image`, `visibility`, `updated_at`, `created_at`, `deleted_at`) VALUES
-(4, 'Jorge Oscar Gamez', 'jorgeoscargamez@gmail.com', '$2y$10$.2LvmSNRYdE1R0D39hq1zuD24M8BIz93FOz.17IZaQxp0WFyO.SKy', '74hKCto4gIe6yMxDGX9GVyTfavGDLzVFT1qhTLDb1As43jSmqYpIBr3ilYuq', NULL, NULL, NULL, NULL, 'Administrador', '1540259467.png', 'Habilitado', '2018-10-23 01:51:07', '2018-06-02 01:34:17', NULL),
+(4, 'Jorge Oscar Gamez', 'jorgeoscargamez@gmail.com', '$2y$10$.2LvmSNRYdE1R0D39hq1zuD24M8BIz93FOz.17IZaQxp0WFyO.SKy', 'femsZQoHA2qojsHvi4LO0fxUb32waGhCY2QGUNfP6ftbPadZu6lgDxRNnzIq', NULL, NULL, NULL, NULL, 'Administrador', '1540259467.png', 'Habilitado', '2018-10-23 01:51:07', '2018-06-02 01:34:17', NULL),
 (5, 'Antonella Resgiszewski', 'antoresg@gmail.com', '$2y$10$/xFdKVsUzbWzpr0VYVq4..5XNw2YAv5lb0qYEHJEDpH9KyfJQP6L2', 'XJ0xsRqLZ8XE4tPACAjpTQrtlirxpkr0G9KvGB9eS06CNNRso5S14Lrpdnxv', NULL, NULL, NULL, NULL, 'Administrador', 'https://scontent.faep13-1.fna.fbcdn.net/v/t31.0-8/10714508_773777939349562_924903737270818261_o.jpg?_nc_cat=0&oh=ff21dc3b44c0c3f11c7ab747237e0a16&oe=5B84466B', 'Habilitado', '2018-06-02 18:31:55', '2018-06-02 02:18:52', NULL),
 (6, 'Gonzalo Leguizamon', 'gonzalouriel32@gmail.com', '$2y$10$V3EEKeTNZJy9PvJDCeCpV.akap.YWCVoKFePS642Itwjb7KuvNJES', 'VWEXOPAe2wfdzUXGVl3nLm6q76LNWBlH2P83mhaKHwnCX90cwdZMWBpdWt18', NULL, NULL, NULL, NULL, 'Administrador', 'https://scontent.faep13-1.fna.fbcdn.net/v/t31.0-8/20729155_10210222207007248_9194040084612685150_o.jpg?_nc_cat=0&oh=52cfa640283932cce30e731bfe092d7f&oe=5BB9BAF8', 'Habilitado', '2018-06-04 06:21:33', '2018-06-02 02:22:43', NULL),
 (7, 'Ezequiel Mendez Alejandro', 'mendezalejandro.e@gmail.com', '$2y$10$PMiXxVtr3hvOC1YbetJXv.7sjsvlkAuXj11zag.iwIOEYo4Ui5Khe', 'zFNgtWoGf9rJt7jZzAex2eUOuufdieFj4rvfDRzjPfwZsucIPQniseCYFPhl', NULL, NULL, NULL, NULL, 'Administrador', 'https://media.licdn.com/dms/image/C4D03AQF5PLp7hEPW3w/profile-displayphoto-shrink_800_800/0?e=1533168000&v=beta&t=KON3Z-WYwa6zBWa6d3KjrUqjo8On8bB8VMOwsbPMLWo', 'Habilitado', '2018-06-02 18:34:32', '2018-06-02 02:52:40', NULL),
@@ -225,7 +230,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `addre
 (15, 'Leonel Cabado', 'leonelcabado7@gmail.com', '$2y$10$eROtuCRnVgQ/1aBcAIz6xOjKRJZdhTnUDBscxfte7Oawwp/De9jY.', 'tirf5C6rp4tljsaRos13x3tttYPCKv1ijUmBrg352krBUbatRScxadsMAqxQ', NULL, NULL, NULL, NULL, '', NULL, 'Habilitado', '2018-06-05 22:18:50', '2018-06-04 07:59:25', NULL),
 (16, 'Test', 'test@test.com', '$2y$10$RZKOMJdN1rLD3AKuq8NKNeQ/GWE48XwEBs97v7mNise3zSFuSMziO', 's6U6QQDsR5UgT7pz68IZHnVwDPopSWfekrIjbc8yVRtMfoxAECKGVmHn5qd6', NULL, NULL, NULL, NULL, '', 'default.jpg', 'Habilitado', '2019-06-08 16:06:19', '2019-06-08 16:06:19', NULL),
 (18, 'Fray', 'fray@gmail.com', '$2y$10$r0Y5AA9oDIMjNNuxqEMEfeIEHSYQkO/yYQK5UJhveQA6rhVAfwKyy', 'vXpcFySkhdbULLUPj9uwuMdK7TbpHXib2FzlEaMYBz50Tv3i7ahURNaZ6B6E', NULL, NULL, NULL, NULL, 'Invitado', 'default.jpg', 'Habilitado', '2019-06-15 19:05:19', '2019-06-15 19:05:19', NULL),
-(19, 'Tete', 'tete@gmail.com', '$2y$10$vtnAmt34ljXylPyqWKB0/uNRXWf07qDzuFhPuGAHRWLrCt70isvbi', 'qCXVX45sGNn6bjqffGRpYYYEbxjZZB1gZofbSdhVtImhOjIZQ2Q05Sn37yZB', NULL, NULL, NULL, NULL, 'Cadete', 'default.jpg', 'Habilitado', '2019-06-17 00:04:55', '2019-06-17 00:04:55', NULL),
+(19, 'Tete', 'tete@gmail.com', '$2y$10$vtnAmt34ljXylPyqWKB0/uNRXWf07qDzuFhPuGAHRWLrCt70isvbi', 'um5yloxR5BGKGnpwSYxQSlGtEW0eyA133KBZpMJg39ppRDlDEqpR2wIXCQbn', NULL, NULL, NULL, NULL, 'Cadete', 'default.jpg', 'Habilitado', '2019-06-17 00:04:55', '2019-06-17 00:04:55', NULL),
 (20, 'Bruno Vitucci', 'vituccibruno@gmail.com', '$2y$10$UckLsfN5cgPbgh2.wDIbvuiybr8Zo/tKF5ya6rsZktlO8I4tOUnFG', NULL, NULL, NULL, NULL, NULL, 'Cliente', 'default.jpg', 'Habilitado', '2019-06-17 04:16:06', '2019-06-17 04:16:06', NULL);
 
 --
@@ -252,9 +257,9 @@ ALTER TABLE `locations`
   ADD KEY `users_id` (`users_id`);
 
 --
--- Indices de la tabla `migrations`
+-- Indices de la tabla `messages`
 --
-ALTER TABLE `migrations`
+ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -301,10 +306,10 @@ ALTER TABLE `locations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de la tabla `migrations`
+-- AUTO_INCREMENT de la tabla `messages`
 --
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `messages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `move_tasks`
@@ -316,7 +321,7 @@ ALTER TABLE `move_tasks`
 -- AUTO_INCREMENT de la tabla `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `services`

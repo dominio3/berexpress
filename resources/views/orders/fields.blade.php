@@ -282,7 +282,13 @@
     <div class="form-group col-sm-6">
         {!! Form::label('status', 'Estado:') !!}
         <!-- CADETE solo debe poder seleccionar algunos estados -->           
-        {!! Form::select('status', ['En viaje a Origen','Retirado','En viaje a Destino','Entregado'], null, ['class' => 'form-control' ]) !!}
+        {!! Form::select('status', $statusCadete, null, ['class' => 'form-control' ]) !!}
+    </div>
+
+    <!-- Submit Field -->
+    <div class="form-group col-sm-12">
+        {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
+        <a href="{!! route('orders.index') !!}" class="btn btn-default">Cancelar</a>
     </div>
 @else
         
